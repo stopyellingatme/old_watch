@@ -1,0 +1,170 @@
+{
+    "Header": {
+        "Time": "2016-03-03T13:00:18-08:00",
+        "ReportName": "ProfitAndLoss",
+        "ReportBasis": "Accrual",
+        "StartPeriod": "2015-06-01",
+        "EndPeriod": "2015-06-30",
+        "SummarizeColumnsBy": "Total",
+        "Currency": "USD",
+        "Customer": "1",
+        "Option": [{
+            "Name": "AccountingStandard",
+            "Value": "GAAP"
+        }, {
+            "Name": "NoReportData",
+            "Value": "false"
+        }]
+    },
+    "Columns": {
+        "Column": [{
+            "ColTitle": "",
+            "ColType": "Account",
+            "MetaData": [{
+                "Name": "ColKey",
+                "Value": "account"
+            }]
+        }, {
+            "ColTitle": "Total",
+            "ColType": "Money",
+            "MetaData": [{
+                "Name": "ColKey",
+                "Value": "total"
+            }]
+        }]
+    },
+    "Rows": {
+        "Row": [{
+            "Header": {
+                "ColData": [{
+                    "value": "Income"
+                }, {
+                    "value": ""
+                }]
+            },
+            "Rows": {
+                "Row": [{
+                    "Header": {
+                        "ColData": [{
+                            "value": "Landscaping Services",
+                            "id": "45"
+                        }, {
+                            "value": ""
+                        }]
+                    },
+                    "Rows": {
+                        "Row": [{
+                            "Header": {
+                                "ColData": [{
+                                    "value": "Job Materials",
+                                    "id": "46"
+                                }, {
+                                    "value": ""
+                                }]
+                            },
+                            "Rows": {
+                                "Row": [{
+                                    "ColData": [{
+                                        "value": "Fountains and Garden Lighting",
+                                        "id": "48"
+                                    }, {
+                                        "value": "275.00"
+                                    }],
+                                    "type": "Data"
+                                }, {
+                                    "ColData": [{
+                                        "value": "Plants and Soil",
+                                        "id": "49"
+                                    }, {
+                                        "value": "150.00"
+                                    }],
+                                    "type": "Data"
+                                }]
+                            },
+                            "Summary": {
+                                "ColData": [{
+                                    "value": "Total Job Materials"
+                                }, {
+                                    "value": "425.00"
+                                }]
+                            },
+                            "type": "Section"
+                        }]
+                    },
+                    "Summary": {
+                        "ColData": [{
+                            "value": "Total Landscaping Services"
+                        }, {
+                            "value": "425.00"
+                        }]
+                    },
+                    "type": "Section"
+                }, {
+                    "ColData": [{
+                        "value": "Pest Control Services",
+                        "id": "54"
+                    }, {
+                        "value": "-100.00"
+                    }],
+                    "type": "Data"
+                }]
+            },
+            "Summary": {
+                "ColData": [{
+                    "value": "Total Income"
+                }, {
+                    "value": "325.00"
+                }]
+            },
+            "type": "Section",
+            "group": "Income"
+        }, {
+            "Summary": {
+                "ColData": [{
+                    "value": "Gross Profit"
+                }, {
+                    "value": "325.00"
+                }]
+            },
+            "type": "Section",
+            "group": "GrossProfit"
+        }, {
+            "Header": {
+                "ColData": [{
+                    "value": "Expenses"
+                }, {
+                    "value": ""
+                }]
+            },
+            "Summary": {
+                "ColData": [{
+                    "value": "Total Expenses"
+                }, {
+                    "value": ""
+                }]
+            },
+            "type": "Section",
+            "group": "Expenses"
+        }, {
+            "Summary": {
+                "ColData": [{
+                    "value": "Net Operating Income"
+                }, {
+                    "value": "325.00"
+                }]
+            },
+            "type": "Section",
+            "group": "NetOperatingIncome"
+        }, {
+            "Summary": {
+                "ColData": [{
+                    "value": "Net Income"
+                }, {
+                    "value": "325.00"
+                }]
+            },
+            "type": "Section",
+            "group": "NetIncome"
+        }]
+    }
+}

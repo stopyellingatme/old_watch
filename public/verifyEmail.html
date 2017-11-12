@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Verify Email - WatchTower</title>
+    <link rel="stylesheet" type="text/css" href="css/verifyEmail.css">
+    <!-- Google Tag Manager -->
+
+    <!-- End Google Tag Manager -->
+
+    <!--Cool Buttons!-->
+    <link rel="stylesheet" type="text/css" href="css/bttn.min.css">
+    <!--Material Lite Components Refs-->
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+</head>
+
+<body>
+
+    <div class="verifyEmailBlock" id="verifyEmailArea">
+        <div class="mdl-card mdl-shadow--16dp" id="verifyCard">
+            
+            <br>
+            <div class="mdl-card__media" style="display: inline-flex; justify-content: center;  background-color: white;">
+                <img src="img/wtLogoBlue7.gif" width="85px" height="100px" border="0" alt="" onclick="window.location='login.html'">
+            </div>
+            <div class="mdl-card__header" style="margin: 5px; color: #09293F; font-size: 22px; text-align: center;">You've been Authenticated!</div>
+            <div id="verifyTextArea" style="text-align: center;">
+                <div class="mdl-card__supporting-text">
+
+                    <label>You can now log in and begin using our platform!</label><br><br>
+                    <div class="mdl-card__actions mdl-card--border" style="display: inline-flex; justify-content: center;">
+
+                                              
+                        <button class="bttn-unite bttn-sm bttn-success bttn-no-outline" onclick="window.location='login.html'">Let's Go!</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <!--JAVASCRIPT-->
+    <script src="js/verifyEmail.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!-- Service Worker-->
+    <script src="js/sw.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAWjJlYl96ut9FeBRGpl-HDV8_3g-HqZNs",
+            authDomain: "watchtower-d7e58.firebaseapp.com",
+            databaseURL: "https://watchtower-d7e58.firebaseio.com",
+            storageBucket: "watchtower-d7e58.appspot.com",
+            messagingSenderId: "705458577363"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</body>
+
+</html>

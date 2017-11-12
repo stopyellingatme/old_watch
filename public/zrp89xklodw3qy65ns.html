@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93255113-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register - WatchTower</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/entreprenuersignup.css">
+
+    <!--Cool Buttons!-->
+    <link rel="stylesheet" type="text/css" href="css/bttn.min.css">
+    <!--Material Lite Components Refs-->
+    <link rel="stylesheet" href="css/material.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--JQuery-->
+    <!--<script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+    <!--Firebase Stuff-->
+    <!-- Site Functions & Actions -->
+    <!--<script src="js/app.min.js"></script>
+    <script src="js/app.js"></script>-->
+    <!--Stripe Payment -->
+
+    <!--JAVASCRIPT-->
+    <script src="js/jquery.min.js"></script>
+    <!--EVERYTHING GOES BELOW JQUERY LINK-->
+
+    <script src="js/entreprenuersignup.js"></script>
+    <script src="js/material.min.js"></script>
+
+    <!-- Service Worker-->
+    <script src="js/sw.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+        authDomain: "watchtower-test-60111.firebaseapp.com",
+        databaseURL: "https://watchtower-test-60111.firebaseio.com",
+        projectId: "watchtower-test-60111",
+        storageBucket: "watchtower-test-60111.appspot.com",
+        messagingSenderId: "1052706939191"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body class="loginBody">
+
+
+    <!--Register Block-->
+
+    <div class="registerBlock" id="registerCardArea">
+        <div class="mdl-card mdl-shadow--16dp" id="registerCard">
+            <div class="mdl-card__header" style="margin: 5px; color: #09293F; font-size: 22px; text-align: center;">Register with WatchTower</div>
+            <br>
+            <div class="mdl-card__media" style="display: inline-flex; justify-content: center;  background-color: white;">
+                <img src="img/WatchTower-Logo.png" width="80px" height="100px" border="0" alt="">
+            </div>
+            <div id="registerContainer" style="text-align: center;">
+                <div class="mdl-card__supporting-text">
+
+
+
+                    <form name="input" accept-charset="utf-8">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" title="Please Enter a valid Email Address" type="email" id="email_register">
+                            <label class="mdl-textfield__label" for="email_register">Email</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register">
+                            <label class="mdl-textfield__label" for="password_register">Password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_register_confirm">
+                            <label class="mdl-textfield__label" for="password_register_confirm">Confirm Password</label>
+                        </div>
+                        <label id="passwordMatchLabel" style="display:none;color:red;">Passwords do not match.<br>Must be atleast 8 characters, one number, uppercase and lowercase letter</label><br>
+                        <label id="checkTheBoxLabel" style="display:none;color:red;">Please Accept the License Agreement.</label><br>
+                        <br>
+                        <div>
+                            <label>
+                            <input type='checkbox'>
+                                <i class="input-helper"></i>
+                                Accept the <a href="terms.html" target="_blank">License Agreement</a> 
+                        </label>
+                        </div>
+                        <br>
+                        <div class="mdl-card__actions mdl-card--border" style="display: inline-flex; justify-content: center;">
+                            <!--<input id="signupButton" type="submit" value="Sign Up" autofocus>-->
+                            <!--<button type="" class="bttn-unite bttn-sm bttn-danger bttn-no-outline" onclick="window.location='index.html'">Cancel</button>                    <br><br>-->
+                            <button id="sign-up-button" class="bttn-unite bttn-sm bttn-primary bttn-no-outline" type="submit">Sign Up</button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

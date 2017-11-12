@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Glossary - WatchTower</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--<link rel="stylesheet" href="jQuery-Impromptu-master/dist/jquery-impromptu.min.css">-->
+    <!--JQuery-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+</head>
+
+<body>
+    <!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+        <header class="mdl-layout__header" id="mainPageHeader" style="background-color: #09293F;">
+            <div class="mdl-layout__header-row">
+                <!-- Quarter Countdown Label -->
+                <label id="quarterCountdown"></label>
+                <div class="mdl-layout-spacer"></div>
+                <label id="settingsLabel" style="font-size: 24px; color: #f9f9f9;">Glossary</label>
+                <!-- Add Text Area in Header -->
+
+                <div class="mdl-layout-spacer"></div>
+
+                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i></button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+
+                    <li class="mdl-menu__item" id="settingsButton" onclick="window.location='platform.html'">Main Page</li>
+                    <li class="mdl-menu__item" onclick="logOut()" id="signOutButton">Log Out</li>
+                </ul>
+            </div>
+        </header>
+
+        <!--Nav Area; Generate Company List here-->
+        <div class="mdl-layout__drawer" id="navListArea">
+            <div style="text-align:center;">
+            <br>
+                <span class="mdl-layout-title" style="color:#09293F;" onclick="window.location='platform.html'"> <img width="15%" height="15%"src="img/wtLogoBlue7.gif" alt=""> WatchTower™</span>
+                <hr>
+            </div>
+            
+            <nav class="mdl-navigation" id="glossaryNav">
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#healthScoreArea)').hide(); $('#healthScoreArea').show();"><strong> Health Score</strong> </a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#healthScoreExplinationArea)').hide(); $('#healthScoreExplinationArea').show();"><strong> Health Score Explanation</strong> </a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#primaryResArea)').hide(); $('#primaryResArea').show();">Primary Reserve Ratio</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#viabilityArea)').hide(); $('#viabilityArea').show();">Viability Ratio</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#ronarResArea)').hide(); $('#ronarResArea').show();">Return on Net Assets Ratio</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#netIncomeRatioArea)').hide(); $('#netIncomeRatioArea').show();">Net Operating Revenue Ratio</a>
+
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#expNAArea)').hide(); $('#expNAArea').show();">Expendable Net Assets</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#totalExpArea)').hide(); $('#totalExpArea').show();">Total Expenses</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#ltdArea)').hide(); $('#ltdArea').show();">Long Term Debt</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#beginQNAArea)').hide(); $('#beginQNAArea').show();">Net Assets</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#deltaNAArea)').hide(); $('#deltaNAArea').show();">Delta∆  Net Assets</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#opSorDArea)').hide(); $('#opSorDArea').show();">Operating Surplus or Deficit</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#opRevArea)').hide(); $('#opRevArea').show();">Operating Revenue</a>
+
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#assetmanRatiosArea)').hide(); $('#assetmanRatiosArea').show();">Asset Managment Ratios</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#solveAndCapRatiosArea)').hide(); $('#solveAndCapRatiosArea').show();">Solvency and Capital Structure Ratios</a>
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#ProfitabilityRatiosArea)').hide(); $('#ProfitabilityRatiosArea').show();">Profitability Ratios</a>
+
+                <a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;" onclick="$('.glossaryItem:not(#dywExplainArea)').hide(); $('#dywExplainArea').show();">"Data You Want"</a>
+                <!--<a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;">Health Score</a>-->
+                <!--<a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;">Health Score</a>-->
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content" style="margin:50px; text-align:center; min-height:700px;">
+                <!-- Your content goes here -->
+                <!--<div class="glossaryItem" id="defaultArea" style="display:block;">
+                    <h1>Glossary Item</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet odio tincidunt, imperdiet felis non, imperdiet tellus. Ut pretium bibendum odio vel convallis. Vestibulum a convallis lectus. Donec consequat venenatis nibh a ullamcorper. In euismod, nunc eget sagittis maximus, ex arcu placerat neque, ac rhoncus est mauris at elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam feugiat dictum sem, in vulputate libero. Ut id egestas dui. Pellentesque sit amet molestie ipsum. Morbi elementum neque vitae purus porttitor pellentesque. Phasellus malesuada lacus et risus porttitor, tristique vestibulum lorem condimentum. Nulla non interdum erat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec nec ex et purus dignissim varius. Nam nec diam sit amet nisl consectetur consectetur. Nulla volutpat eu elit sit amet lacinia.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>-->
+                <div class="glossaryItem" id="healthScoreArea" style="display:block;">
+                    <h1>Health Score</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Watchtower Technologies, LLC’s proprietary benchmarking index score of the core ratios assessing resource sufficiency, operating income/loss, financial assets, and debt. The Health Score is borne out of the corporate financial statements.</strong><br><br><br><br><strong>Balance Sheet-</strong>                        Summarizes a company's assets, liabilities and shareholders' equity at a specific point in time representing the state of a company's finances at a moment in time.<br><br><strong>Income Statement-</strong> Summarizes the revenues, costs and expenses incurred during a specific period of time (quarterly, annually).<br><br><strong>Cash Flows Statement-</strong> Reports all cash
+                        inflows a company receives from both its ongoing operations and external investment sources, as well as all cash outflows that pay for business activities and investments during a given time period.<br><br><strong>Statement of Retained Earnings-</strong> The amount of net income which is left in a business after the
+                        distribution dividends or withdrawals by owner is called retained earnings.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="healthScoreExplinationArea" style="display:none;">
+                    <h1>Health Score Explanation</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>It is widely held that, on the scale from 0 to 10, a Health Score of 3 or above indicates that the business has sufficient and adequately managed resources to sustain itself as a viable entity. Businesses score on the scale is relative to many factors, and measures of financial health are one of a myriad of indicators with regard to business success. Consequently, many rising businesses, in early stage or pre-revenue, might register a score of 0-3 alongside a business which is fledgling with little potential or one in decline. Hence, it is important to know why a business scores where it does on the Health Score scale.
+                        </strong><br><br></strong><br><br><strong>Score of 0-1</strong>: Assess viability of the business: Viability is in question. There can be many reasons for this. A new and fledgling company with little resources can find itself here. Similarly, a company in decline may also reside among this score. It is important to evaluate why a business is here. Look to the asset management and profitability ratios to assess management decision making and operations. Is the business improving, on its way to market or in decline? Is it a viable idea? What is the probability for ROA/ROI?<br><br><strong>Score of 0-3</strong>: Position/re-position business for viability and growth: Look to the asset management and profitability ratios to assess management decision making and operations. What can be done to put the company in a position to pursue growth without jeopardizing viability. Is the business viable for the long run?<br><br><strong>Score of 3-5</strong>: Growth/transformation strategies favorable: Management can begin to consider tempered growth strategies.<br><br><strong>Score of 4-7</strong>: Direct resources for growth and market competitive environment: A business in this stage has the resources and reasonable management track record to make significant plays for growth and market share.<br><br><strong>Score of 5-9</strong>: Permits new and novel initiatives or strategic acquisitions.<br><br><strong>Score of 7-10</strong>: Strongly positioned to achieve market leadership.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="primaryResArea" style="display:none;">
+                    <h1>Primary Reserve Ratio</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Measures the financial strength of the company by comparing expendable net assets to total expenses. Expendable net assets represent those assets that the company can access quickly and spend to satisfy its debt obligations. This ratio provides a snapshot of financial strength and flexibility by indicating how long the company could function using its expendable reserves without relying on additional net assets generated by operations. Trend analysis indicates whether a company has increased its net worth in proportion to the rate of growth in its operating size. The trend of this ratio is important. A negative or decreasing trend over time indicates a weakening financial condition.</strong>
+
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="viabilityArea" style="display:none;">
+                    <h1>Viability Ratio</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>The Viability Ratio measures one of the most basic determinants of clear financial health: the availability of expendable net assets to cover debt should the business need to settle its obligations as of the balance sheet date. Although a ratio of 1:1 or greater indicates that, as of the balance sheet date, a business has sufficient expendable net assets to satisfy debt obligations, this value should not serve as an objective since most businesses and investors would find this relationship unacceptable.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="ronarResArea" style="display:none;">
+                    <h1>Return on Net Assets Ratio</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Determines whether the company is performing better financially than in previous years by measuring total economic return. A decline in this ratio may be appropriate and even warranted if it reflects a strategy to better fulfill the company’s mission. (i.e. We would have increased net assets; however, we built a new laboratory which will increase our production/output going forward).  On the other hand, an improving trend in this ratio indicates that the business is increasing its net assets and is likely to be able to set aside financial resources to strengthen its future financial flexibility.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="netIncomeRatioArea" style="display:none;">
+                    <h1>Net Operating Revenue Ratio</h1><br>
+                    <h5>Also known as Net Income Ratio</h5>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>This ratio indicates whether total operational activities resulted in a surplus or a deficit, “Do operating results indicate the business is living within available resources?” (mitigating excess burn rate). This ratio is a primary indicator, explaining how the change in unrestricted net assets affects the behavior of the other three core ratios. A large surplus or deficit directly impacts the amount of funds a business adds to or subtracts from net assets, thereby affecting the Primary Reserve Ratio, the Return on Net Assets Ratio, and the Viability Ratio.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+
+
+
+                <div class="glossaryItem" id="expNAArea" style="display:none;">
+                    <h1>Expendable Net Assets</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Cash and Cash Equivalents can be found on the Balance Sheet under Assets.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="totalExpArea" style="display:none;">
+                    <h1>Total Expenses</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Total Expenses is an aggregate (sum) of:</strong><br><br><strong>1.)</strong> Cost of Goods Sold<br><br><strong>2.)</strong> Selling, General and Administrative Expenses<br><br><strong>3.)</strong> Depreciation and Amortization Expenses<br><br><strong>4.)</strong> Interest Income (Expenses)<br><br><strong>5.)</strong> Other Non-Operating Income (Expenses)<br><br><strong>6.)</strong> Income Tax Expense.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="ltdArea" style="display:none;">
+                    <h1>Long Term Debt</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Long Term Debt can be found on the Balance Sheet under liabilities.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="beginQNAArea" style="display:none;">
+                    <h1>Net Assets</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Net Assets is found on the Balance Sheet and is calculated by subtracting the previous quarter's total assets by its total liabilities.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="deltaNAArea" style="display:none;">
+                    <h1>Delta ∆ Net Assets</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Delta ∆ (change in) Net Assets can be found on the Balance Sheet and is definded as follows. The previous quarter's total assets are subtracted from its total liabilities, outputing net assets for the previous quarter. Then, the current quarter's total assets are subtracted from its total liabilities, outputing net assets for the current quarter. WatchTower asks that you input the previous quarter's net assets and the current quarter's net assets.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                
+                <div class="glossaryItem" id="opSorDArea" style="display:none;">
+                    <h1>Operating Surplus or Deficit</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Operating Surplus or Deficit can be found on the Income Statement under "Net Income".</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="opRevArea" style="display:none;">
+                    <h1>Operating Revenue</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Operating Revenue can be found on the Income Statement under "Net Sales".</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+
+
+                <div class="glossaryItem" id="assetmanRatiosArea" style="display:none;">
+                    <h1>Asset Managment Ratios</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Days Sales in Inventory</strong>: The average time required for a company to convert its inventory into sales. A shorter period generally indicates efficiency.<br><br><strong>Days Sales Outstanding</strong>: The number of days it takes a company to collect cash from its credit sales. The shorter the better.<br><br><strong>Days Payable Outstanding</strong>: The average number of days a company takes to pay its suppliers.<br><br><strong>Cash Cycle</strong>: The number of days it takes a business to convert its production inputs into cash receipts.<br><br><strong>Inventory Turnover</strong>: How often inventory is sold and replaced over a period of time.<br><br><strong>Receivables Turnover</strong>: number of times in a given time period that a business collects its average accounts receivable.<br><br><strong>Payables Turnover</strong>: Detects the rate at which the company pays suppliers.<br><br><strong>Total Asset Turnover</strong>: Measures how efficiently a business uses its assets to generate sales.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="solveAndCapRatiosArea" style="display:none;">
+                    <h1>Solvency and Capital Structure </h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Current Ratio</strong>: Measures the ability of a company to cover its short-term liabilities with its current assets.<br><br><strong>Quick Ratio</strong>: Acid Test Ratio, shows the ratio of cash and other liquid resources in comparison to current liabilities.<br><br><strong>Interest Coverage Ratio</strong>: A measure of the ability of the business to meet its interest payments.<br><br><strong>Times Earned Interest Ratio</strong>: Indicator of the company’s ability to pay off its interest expense with available earnings.<br><br><strong>Debt-Equity Ratio</strong>: A measure of the percentage of company financing that comes from creditors and investors.<br><br><strong>Equity Multiplier Ratio</strong>: Measures the percentage of assets that are financed or owed by the shareholders.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+                <div class="glossaryItem" id="ProfitabilityRatiosArea" style="display:none;">
+                    <h1>Profitability Ratios</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>Gross Profit Margin</strong>: The percentage of sales that exceed the cost of goods sold.<br><br><strong>Operating Profit Margin</strong>: The percentage of operating profit (before interest and tax) relative to the revenue earned during a given period of time.<br><br><strong>Net Profit Margin</strong>: The percentage of revenue left after all expenses have been deducted from sales.<br><br><strong>Return on Assets (ROA)</strong>: The percentage of profit a company earns in relation to its overall resources.<br><br><strong>Return on Equity (ROE)</strong>: Measures profitability--how many dollars of profit a company generates with each dollar of shareholders' equity.
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+
+
+
+
+
+                <div class="glossaryItem" id="dywExplainArea" style="display:none;">
+                    <h1>"Data You Want"</h1>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align:left; font-size: 18px;">
+                        <strong>"Data You Want" are financial insights that are usually hard to find. Financial reports are very detailed and require time to sift through. These measurements provide accurate information in a simple manner.</strong>
+
+                    </p>
+                    <br>
+                    <br>
+                </div>
+
+
+
+
+
+            </div>
+            <div id="footer">
+                <footer class="mdl-mega-footer" style="color:#3696bc; background-color: white;">
+                    <div class="mdl-mega-footer__middle-section">
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Features</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="aboutus.html">About</a></li>
+                                <li><a href="terms.html">Terms</a></li>
+                                <li><a href="index.html">Partners</a></li>
+                                <li><a href="blog.html">Updates</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Details</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="index.html">Specs</a></li>
+                                <li><a href="index.html">Tools</a></li>
+                                <li><a href="index.html">Resources</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Technology</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="index.html">How it works</a></li>
+                                <!--<li><a href="#">Patterns</a></li>-->
+                                <li><a href="terms.html">Usage</a></li>
+                                <li><a href="signup.html">Products</a></li>
+                                <!--<li><a href="#">Contracts</a></li>-->
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">FAQ</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="glossary.html">Glossary</a></li>
+                                <li><a href="faq.html">Questions</a></li>
+                                <li><a href="faq.html">Answers</a></li>
+                                <li><a href="contactus.html">Contact us</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="mdl-mega-footer__bottom-section">
+                        <div class="mdl-logo" style="color:black;"><a href="index.html" style="color:black;">© WatchTower Technologies™ LLC </a></div>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li style="color:black;">Patent Pending #######</li>
+                            <li><a href="contactus.html">Help</a></li>
+                            <li><a href="terms.html">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+
+                </footer>
+            </div>
+
+
+        </main>
+
+
+
+
+
+
+        <!--Material Elements-->
+        <script src="js/material.min.js"></script>
+        <!--Custom Implementations-->
+        <script src="js/main.min.js"></script>
+        <!--Firebase Setup-->
+        <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+                authDomain: "watchtower-test-60111.firebaseapp.com",
+                databaseURL: "https://watchtower-test-60111.firebaseio.com",
+                projectId: "watchtower-test-60111",
+                storageBucket: "watchtower-test-60111.appspot.com",
+                messagingSenderId: "1052706939191"
+            };
+            firebase.initializeApp(config);
+            </script>
+</body>
+
+</html>

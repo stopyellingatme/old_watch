@@ -1,0 +1,63 @@
+<html>
+<head>
+  <title>OAuth2 Sample App - Intuit</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    // if(window.opener) {
+    //   window.opener.location.href = '/quickbooksIntegrate/connected'
+    //   window.close()
+    // }
+
+    function apiCall() {
+      $("#result").html('Loading...')
+      $.get("/quickbooksIntegrate/api_call", function(data) {
+        $("#result").html(JSON.stringify(data, null, 2))
+      })
+    }
+    function revokeCall() {
+      $("#result").html('Loading...')
+      $.get("/quickbooksIntegrate/api_call/revoke", function(data) {
+        $("#result").html(JSON.stringify(data, null, 2))
+      })
+    }
+    function refreshCall() {
+      $("#result").html('Loading...')
+      $.get("/quickbooksIntegrate/api_call/refresh", function(data) {
+        $("#result").html(JSON.stringify(data, null, 2))
+      })
+    }
+    // $(document).ready(function(){
+
+    // $("#addButton").click(function(){
+
+    //    var input = $("input[name='companyKeyIdItem']").val(); 
+    //    // .val() will give textbox value
+    //   document.getElementById('companyKey') += input;
+    //   //  $("#compKeyListItem").append('<div class="companyKey" value="'+input+'" id="fuckingKEY">' + input + '</div>');
+    //  });
+    // });
+    
+  </script>
+</head>
+<body>
+  <a href="/">Home</a>
+  <h3>Connected!</h3>
+  <p>Welcome<% if (locals.givenName) { %>, <%= locals.givenName %><% } %>!</p>
+  <p>Would you like to make a sample API call?</p>
+  <!-- <p><input name="companyKeyIdItem" type="text" placeholder="Paste Company Key Here" style="text-align: left; width: 250px;"></p> -->
+  <!-- <div id="addButton">Click to Add Company Key!!!</div><br><br> -->
+  <!-- <div id="companyKey"></div> -->
+  <br><br>
+  <form action="/quickbooksIntegrate/api_call" method="POST">
+      <label>Enter/Paste Company Key:</label><br>
+      <input type="text" name="companyKey" placeholder="Company Key">
+      <br>
+      <button type="submit">Submit</button>
+      </form>
+  <div>
+    <br><br>
+    <div id="result"></div>
+  </div>
+</body>
+</html>

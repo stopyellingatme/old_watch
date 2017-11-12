@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scans - WatchTower</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/scans.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/jquery-impromptu.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--<link rel="stylesheet" href="jQuery-Impromptu-master/dist/jquery-impromptu.min.css">-->
+    <!--JQuery-->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <!--Date Formatting-->
+    <script src="js/moment.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
+        <header class="mdl-layout__header" id="mainPageHeader" style="background-color: #09293F;">
+            <div class="mdl-layout__header-row">
+                <!-- Quarter Countdown Label -->
+                <label id="quarterCountdown"></label>
+                <div class="mdl-layout-spacer"></div>
+                <label id="settingsLabel" style="font-size: 24px; color: #f9f9f9;">Financial Documents</label>
+                <!-- Add Text Area in Header -->
+
+                <div class="mdl-layout-spacer"></div>
+
+                <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">more_vert</i></button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
+                    <li class="mdl-menu__item" id="addScanButton" onclick="addScan()" style="display:none;">Add Scan</li>
+
+                    <li class="mdl-menu__item" id="settingsButton" onclick="window.location='platform.html'">Main Page</li>
+                    <li class="mdl-menu__item" onclick="logOut()" id="signOutButton">Log Out</li>
+                </ul>
+            </div>
+        </header>
+
+        <!--Nav Area; Generate Company List here-->
+        <div class="mdl-layout__drawer" id="navListArea">
+            <div style="text-align:center;">
+                <br>
+                <span class="mdl-layout-title" style="color:#09293F;" onclick="window.location='platform.html'"> <img width="15%" height="15%"src="img/wtLogoBlue7.gif" alt=""> WatchTower™</span>
+            </div>
+            <hr>
+            <nav class="mdl-navigation" id="scansNav">
+                <!--<a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;">Health Score</a>-->
+                <!--<a id="" class="mdl-navigation__link" style="color: #00051e; font-size: 15px;">Health Score</a>-->
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content" style="margin:30px; text-align:center; min-height:600px;">
+                <!-- Your content goes here -->
+                <div class="glossaryItem" id="defaultArea" style="display:block; text-align:center;">
+                    <h3 id="compNameLabel">Q-YYYY</h3>
+                    <button onclick="addScan()" id="addScanButtonMain" style="display:none;">Add Financial Document</button>
+                    <hr>
+                    <p id="scanListArea" style="text-align:center; font-size: 20px;">
+                        <strong><a href="#">Balance Sheet</strong>
+                        <br>
+                        <br>
+                        <strong><a href="#">Income Statement</strong>
+                        <br>
+                        <br>
+                        <strong><a href="#">Cash Flows Statement</strong>
+                    </p>
+                    <br>
+                    <br>
+
+
+                </div>
+            </div>
+
+
+
+
+
+
+            <div id="footer">
+                <footer class="mdl-mega-footer" style="color:#3696bc; background-color: white;">
+                    <div class="mdl-mega-footer__middle-section">
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Features</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="aboutus.html">About</a></li>
+                                <li><a href="terms.html">Terms</a></li>
+                                <li><a href="index.html">Partners</a></li>
+                                <li><a href="blog.html">Updates</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Details</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="index.html">Specs</a></li>
+                                <li><a href="index.html">Tools</a></li>
+                                <li><a href="index.html">Resources</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">Technology</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="index.html">How it works</a></li>
+                                <!--<li><a href="#">Patterns</a></li>-->
+                                <li><a href="terms.html">Usage</a></li>
+                                <li><a href="signup.html">Products</a></li>
+                                <!--<li><a href="#">Contracts</a></li>-->
+                            </ul>
+                        </div>
+
+                        <div class="mdl-mega-footer__drop-down-section">
+                            <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+                            <h1 class="mdl-mega-footer__heading" style="color:black;">FAQ</h1>
+                            <ul class="mdl-mega-footer__link-list">
+                                <li><a href="glossary.html">Glossary</a></li>
+                                <li><a href="faq.html">Questions</a></li>
+                                <li><a href="faq.html">Answers</a></li>
+                                <li><a href="contactus.html">Contact us</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="mdl-mega-footer__bottom-section">
+                        <div class="mdl-logo" style="color:black;"><a href="index.html" style="color:black;">© WatchTower Technologies™ LLC </a></div>
+                        <ul class="mdl-mega-footer__link-list">
+                            <li style="color:black;">Patent Pending #######</li>
+                            <li><a href="contactus.html">Help</a></li>
+                            <li><a href="terms.html">Privacy & Terms</a></li>
+                        </ul>
+                    </div>
+
+                </footer>
+            </div>
+        </main>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!--Material Elements-->
+    <script src="js/material.min.js"></script>
+    <!--Custom Implementations-->
+    <script src="js/scans.js"></script>
+
+    <!--Impromptu Script-->
+    <script src="js/jquery-impromptu.min.js"></script>
+    <!--Firebase Setup-->
+    
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+        authDomain: "watchtower-test-60111.firebaseapp.com",
+        databaseURL: "https://watchtower-test-60111.firebaseio.com",
+        projectId: "watchtower-test-60111",
+        storageBucket: "watchtower-test-60111.appspot.com",
+        messagingSenderId: "1052706939191"
+      };
+      firebase.initializeApp(config);
+    </script>
+</body>
+
+</html>

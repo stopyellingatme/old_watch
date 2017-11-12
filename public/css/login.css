@@ -1,0 +1,71 @@
+body {
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #F0F0F0;
+    /*background-image: url(https://i.imgur.com/cBq0L24.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;*/
+}
+
+#fgPasswordCardArea {
+    /*visibility: hidden; */
+    position: absolute;
+    display: none;
+}
+
+#loginCardArea {
+    /*visibility: visible; */
+    position: absolute;
+}
+
+.mdl-card {
+    /*background: #2db34a;*/
+    transition-property: background, border-radius;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+    transition: all .2s linear;
+    margin: 10px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.mdl-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0 60px 60px 0;
+    transform: translateZ(28px);
+    z-index: 5000;
+}
+
+
+
+
+/*
+.mdl-textfield--floating-label input[type=email]:-webkit-autofill ~ label {
+  transform: translate3d(0, -20px, 0);
+  visibility: hidden;
+}
+
+.mdl-textfield--floating-label input[type=email]:-webkit-autofill ~ label:after {
+  /*content: 'Password';*/
+
+@media only screen and (max-width: 1026px) {
+    body {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        background-color: #F0F0F0;
+        /*background-image: url(https://i.imgur.com/cBq0L24.jpg);*/
+        /*background-position: center;*/
+        /*background-size: cover;*/
+        /*background-repeat: no-repeat;*/
+        /*animation: 4s linear 0s infinite bp;*/
+    }
+}

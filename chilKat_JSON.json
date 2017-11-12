@@ -1,0 +1,196 @@
+//ChilKat JSON to parse
+{
+  "Header": {
+    "Time": "2016-10-27T12:47:43-07:00",
+    "ReportName": "CustomerBalanceDetail",
+    "DateMacro": "all",
+    "Currency": "USD",
+    "Customer": "1",
+    "Option": [
+      {
+        "Name": "report_date",
+        "Value": "2016-10-31"
+      },
+      {
+        "Name": "NoReportData",
+        "Value": "false"
+      }
+    ]
+  },
+  "Columns": {
+    "Column": [
+      {
+        "ColTitle": "Date",
+        "ColType": "tx_date"
+      },
+      {
+        "ColTitle": "Transaction Type",
+        "ColType": "txn_type"
+      },
+      {
+        "ColTitle": "Num",
+        "ColType": "doc_num"
+      },
+      {
+        "ColTitle": "Due Date",
+        "ColType": "due_date"
+      },
+      {
+        "ColTitle": "Amount",
+        "ColType": "subt_amount"
+      },
+      {
+        "ColTitle": "Open Balance",
+        "ColType": "subt_open_bal"
+      },
+      {
+        "ColTitle": "Balance",
+        "ColType": "rbal_open_bal"
+      }
+    ]
+  },
+  "Rows": {
+    "Row": [
+      {
+        "Header": {
+          "ColData": [
+            {
+              "value": "Tom Test",
+              "id": "1"
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            }
+          ]
+        },
+        "Rows": {
+          "Row": [
+            {
+              "ColData": [
+                {
+                  "value": "2016-08-19"
+                },
+                {
+                  "value": "Invoice",
+                  "id": "67"
+                },
+                {
+                  "value": "1021"
+                },
+                {
+                  "value": "2016-09-18"
+                },
+                {
+                  "value": "459.00"
+                },
+                {
+                  "value": "239.00"
+                },
+                {
+                  "value": "239.00"
+                }
+              ],
+              "type": "Data"
+            },
+            {
+              "ColData": [
+                {
+                  "value": "2016-10-27"
+                },
+                {
+                  "value": "Invoice",
+                  "id": "153"
+                },
+                {
+                  "value": "1038"
+                },
+                {
+                  "value": "2016-11-26"
+                },
+                {
+                  "value": "175.00"
+                },
+                {
+                  "value": "175.00"
+                },
+                {
+                  "value": "414.00"
+                }
+              ],
+              "type": "Data"
+            }
+          ]
+        },
+        "Summary": {
+          "ColData": [
+            {
+              "value": "Total for Tom Test"
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": "634.00"
+            },
+            {
+              "value": "414.00"
+            },
+            {
+              "value": ""
+            }
+          ]
+        },
+        "type": "Section"
+      },
+      {
+        "Summary": {
+          "ColData": [
+            {
+              "value": "TOTAL"
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": ""
+            },
+            {
+              "value": "634.00"
+            },
+            {
+              "value": "414.00"
+            },
+            {
+              "value": ""
+            }
+          ]
+        },
+        "type": "Section"
+      }
+    ]
+  }
+}

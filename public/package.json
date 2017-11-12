@@ -1,0 +1,16 @@
+{
+  "name": "draft2",
+  "version": "1.0.0",
+  "description": "draft numba two",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Taylor King",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.6.0",
+    "jquery": "^3.2.1",
+    "vex": "0.0.4"
+  }
+}

@@ -1,0 +1,153 @@
+path /users/{userid} is User {
+	read() { true }
+	write() { isCurrentUser(userid) }
+}
+path /company-description-data/{id} is Company {
+	read() {true}
+	write() {isAdmin(id)}
+}
+
+path /health-score-data/{id}/{date} is HealthScore {
+	read() {true}
+	write() {isAdmin(id)}
+}
+
+path /data-you-want/{id}/{date} is DYW {
+	read() {true}
+	write() {isAdmin(id)}
+}
+
+path /sector-data/{id}/{date} is SectorData {
+	read() {true}
+	write() {isAdmin(id)}
+}
+
+path /formal-accounting-data/{id}/{date} is FAD {
+	read() {true}
+	write() {isAdmin(id)}
+}
+	
+
+type Company {
+	name: String,
+	hq: String,
+	description: String,
+	subSector: String,
+	mainSector: String,
+	admin: Admin
+}
+
+type User {
+	email: String,
+	type: String
+}
+
+type HealthScore {
+	TotalExpenses: Number,
+	LongTermDebt: Number,
+	deltaNetAssets: Number,
+	primaryReserveRatio: Number,
+	viabilityRatio: Number,
+	returnOnNetAssetsRatio: Number,
+	netOperatingRevenuesRatio: Number,
+	HealthScore: Number,
+	cashAndCashEq: Number,
+	costOGS: Number,
+	sellingAndAdmin: Number,
+	depAndAmort: Number,
+	otherNonOp: Number,
+	incomeTaxExp: Number,
+	prevQnetAssets: Number,
+	currQnetAssets: Number,
+	netIncome: Number,
+	netSales: Number,
+	interestExp: Number,
+
+}
+
+type DYW {
+	acquisitionCostAvg: Number,
+	acquisitionRevAvg: Number,
+	businessDevExpenditure: Number,
+	travelAndEntertainment: Number,
+	grossMonthlyExpenditure: Number,
+	grossMonthlyRevenue: Number,
+	revChannelMain: String,
+	revChannelMainAmt: Number,
+	fixedCostMain: String,
+	fixedCostMainAmt: Number,
+	dynamicCostMain: String,
+	dynamicCostMainAmt: Number,
+	
+
+}
+
+type SectorData {
+	item0: String,
+	item1: String,
+	item2: String,
+	item3: String,
+	item4: String,
+	item0Amt: Number,
+	item1Amt: Number,
+	item2Amt: Number,
+	item3Amt: Number,
+	item4Amt: Number,
+
+}
+
+type FAD {
+	grossOpProfit: Number,
+	EBITDA: Number,
+	totalAssets: Number,
+	totalLiabilities: Number,
+	totalEquity: Number,
+	EBIT: Number,
+	opActivites: Number,
+	investActivites: Number,
+	financeActivites: Number,
+	netInDeInCash: Number,
+	property: Number,
+	inventory: Number,
+	otherAssets: Number,
+	acctsPayable: Number,
+	accntsReceivable: Number,
+	interestPayable: Number,
+	taxesPayable: Number,
+	otherPayable: Number,
+	currentRatio: Number,
+	quickRatio: Number,
+	interestCoverageRatio: Number,
+	timesEarnedRatio: Number,
+	debtVsEquityRatio: Number,
+	equityMultiplier: Number,
+	grossProfitMargin: Number,
+	operatingProfitMargin: Number,
+	netProfitMargin: Number,
+	returnOnAssetsRatio: Number,
+	returnOnEquityRatio: Number,
+	dsi: Number,
+	dso: Number,
+	dpo: Number,
+	cashCycle: Number,
+	inventoryTO: Number,
+	receivablesTO: Number,
+	payablesTO: Number,
+	totalAssetsTO: Number,
+	
+
+}
+
+
+
+type Admin extends String {
+  validate() { this == auth.uid }
+}
+
+
+// Define isCurrentUser() function to test if the given user id
+// matches the currently signed-in user.
+isCurrentUser(uid) {  auth != null && auth.uid == uid}
+
+
+isAdmin(id)  {auth.uid == root.child('company-description-data/'+id+"/admin").val()}

@@ -1,0 +1,15 @@
+User-Agent: *
+Disallow: /main.html
+Disallow: /platform.html
+Disallow: /js/scans.html
+Disallow: /glossary.html
+Disallow: /js/main.js
+Disallow: /js/main.min.js
+Disallow: /js/entreprenuersignup.js
+Disallow: /js/finprosignup.js
+Disallow: /js/investorsignup.js
+Disallow: /js/signup.js
+Disallow: /7fd8xpwybs3satoqs.html
+Disallow: /hjkk43j143b23v.html
+Disallow: /zrp89xklodw3qy65ns.html
+Allow: /

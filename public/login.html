@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - WatchTower</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <!-- Google Tag Manager -->
+
+    <!-- End Google Tag Manager -->
+
+    <!--Cool Buttons!-->
+    <link rel="stylesheet" type="text/css" href="css/bttn.min.css">
+    <!--Material Lite Components Refs-->
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--JQuery-->
+    <!--<script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+    <!--Firebase Stuff-->
+    <!-- Site Functions & Actions -->
+    <!--<script src="js/app.min.js"></script>
+    <script src="js/app.js"></script>-->
+    <!--Stripe Payment -->
+
+
+</head>
+
+<body>
+   
+    <!--Login Block-->
+
+    <div class="loginBlock" id="loginCardArea">
+    <div style="display: flex; justify-content: center; background-color: #F0F0F0;">
+                <img src="img/wtLogoBlue7.gif" width="85px" height="100px" border="0" alt="" onclick="window.location='index.html'">
+            </div>
+        <div class="mdl-card mdl-shadow--16dp" id="loginCard">
+            <div class="mdl-card__header" style="margin-top: 15px; color: #09293F; font-size: 26px; text-align: center;">WatchTower</div><br>
+            <label style="text-align: center; color: grey; font-size: 18px;">Login</label>
+
+            <br>
+            
+            <div id="loginFieldsContainer" style="text-align: center;">
+                <div class="mdl-card__supporting-text">
+
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="email" name="username" id="email_login" />
+                            <label class="mdl-textfield__label" for="username">Email</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="password_login">
+                            <label class="mdl-textfield__label" for="password_login">Password</label>
+                        </div>
+
+
+
+                    </form>
+                    <div class="mdl-card__actions mdl-card--border" style="display: inline-flex; justify-content: space-between; padding-top: 15px;">
+
+                        <button class="bttn-unite bttn-sm bttn-danger bttn-no-outline" onclick="document.getElementById('loginCardArea').style.display='none'; document.getElementById('fgPasswordCardArea').style.display='inline-flex';">Forgot</button>                        <br><br>
+                        <button class="bttn-unite bttn-sm bttn-primary bttn-no-outline" onclick="signIn()">Login</button><br><br>
+                        <button class="bttn-unite bttn-sm bttn-primary bttn-no-outline" onclick="window.location='signup.html'">Sign Up</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--Forgot Password Block-->
+    <div class="fgPasswordBlock" id="fgPasswordCardArea">
+        <div class="mdl-card mdl-shadow--16dp" id="forgotPasswordCard">
+            <div class="mdl-card__header" style="margin: 5px; color: grey; font-size: 20px; text-align: center;"><small>Forgot Password</small></div>
+            <div class="mdl-card__media" style="display: inline-flex; justify-content: center;  background-color: white;">
+                <img src="img/WatchTower-Logo.png" width="25%" height="25%" border="0" alt="">
+            </div>
+            <div id="loginFieldsContainer" style="text-align: center;">
+                <div class="mdl-card__supporting-text">
+                    <label>Enter your email. We'll send you a link which resets your password!</label>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="email" id="passReset">
+                            <label class="mdl-textfield__label" for="passReset">Email</label>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="mdl-card__actions mdl-card--border" style="display: inline-flex; justify-content: center;">
+                    <button type="" class="bttn-unite bttn-sm bttn-danger bttn-no-outline" onclick="document.getElementById('loginCardArea').style.display='inline-flex'; document.getElementById('fgPasswordCardArea').style.display='none';">Cancel</button>                    <br><br>
+                    <button type="" class="bttn-unite bttn-sm bttn-primary bttn-no-outline" onclick="sendPasswordReset()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!--JAVASCRIPT-->
+    <script src="js/login.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!-- Service Worker-->
+    <script src="js/sw.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+        authDomain: "watchtower-test-60111.firebaseapp.com",
+        databaseURL: "https://watchtower-test-60111.firebaseio.com",
+        projectId: "watchtower-test-60111",
+        storageBucket: "watchtower-test-60111.appspot.com",
+        messagingSenderId: "1052706939191"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "watchtower-test-60111",
+  "private_key_id": "1a502e55654765e1d92838e1fad7d12c8027ce36",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC6n09XUq+DwGeD\nPpHI6baP5KfB7I82FXwsaBWThQD0ozG9WfLY5EGtHwOdjUQcbsSbtCr6E2YDLLfL\nJgnIZwsgP9UGWnemmcHIusAJpsyQ8yoXVv3JyzsvVb8Ym8rZIJ8KwOD1jC/2ZKsE\nI5Ml87xpMw2yBLJ8NZqMUTcPREtjtO/AEyhBypb+6hW/0bxddlP1lXflT9HN29hf\n2txD+J+7/RRETgt4cYHBnXewEV4GbP6dAp+5QZxqm1XW2GXWymfJaxA7zhwJNHsL\nInp3XwjR7NvPOwxzPoxgmUDdeVH7y5NjF0h2A8heY4/S9pCfcovAfSJYgCBcOC+y\nvjcQkQVJAgMBAAECggEALUBByce33TeDIfTC/reE1+E2uDP3CcMt58qZKLsAX1FO\n1z3/P44hSqwRgVtmn4pQS/zkytx3SN/H9Q9VIe2yafBwY+j9yDzSGy0FMZHrWl5L\n33rtcMfBoxmki4ADMKDTT5UzNvb2DkWcnhVOMc6m6c9CS98NtEZ/IfTzZ9VEfnlP\n7kBGPZlAYfG3WgGZrrklvmZgR0kBzxcuPLJXtpBG3RQiVvGZaiZRJoATWIbB4dcE\nEXXWqevx6mXyO7+tDe4rqBUX9WtPWdAHNX0u31UkoMQXSBZM4FXoSi/goao2KTRf\ntP3HQkQ1MQ+BAPVGsuU+N0SkeG0DjItvAVcGqx2ofQKBgQDjvywQTHXqbj963P3C\nA2lDwVJVTrRJyg6HOUSAnv501ffP77bJBhpkl8zfDPwdKVTAcemIHXDs9+UV8m4x\n7bR645uZYamzSn3i2h6pypZ7ZEhy382k2ixIJ9Vfk8DEYbBm3uqms3pAWhyDhEqU\nOmj0Nvg3pAVwhLTlTutr40rjrwKBgQDRxhlMvGQXZtwrgfodXoAD0rMegHv4hhTr\nZ06VHAMmYc7TSX4CgtdLWlmQVLD6zxCTelfm8el2+leUGlHMt8EEfpEqzkwXVydY\npXMo7pNLVNqWEmiKRaBYKgGE00z5nHMWEc2tT1QzXyxzKR2QrqCzF70D4iifzbwJ\nT2lvjvVMhwKBgDoQsqZRKDsl8q9biqMdhYgN0PUJBPRPPNcDJdD5OH0HVJBCWML1\n+GKvRT+VKu4wbHhIUrcucm0oYtLupWO7bClswG4htUeN9XySCgFWMnmxPrtzDhY6\nvdGDvmYI4LvxAC2qJf9sgP3JO73YS79xCPNC1JQzEGP4obpZHbK7F4vnAoGBANAp\n7q0xPXnjfpRGFPbT8eDZUxnvkhXaqCO5jkd1VsLdyCnvAfZn9FE4RSxufnlExUQz\n4cqxQGXqosG7JHUr24QkPNXnhaabu9XByPdTWCMm/wpxFgAwe59Bf+RY8ke4spOx\n8xIKaJnZ1fgpUsdiIuHVqqGR6ZI6zF/Ix+4GRPE9AoGBAJtJGkbLGfFbeJBXJ4X/\n/PwrMBH6dnvN7QPIVOpAhD370+TiTPS6U54DKUkzRZ51CWnkmMnxgZO8UAjAlk0n\n3Y1wjG1m0IQRP4Z2EjB/gGvK1cYMcF6OL8pwsdZb4wUmxEUjm8Bx1GK6H/+FlCxr\n7jCtIM6dUw42QC59o0Xz0zUY\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-c1occ@watchtower-test-60111.iam.gserviceaccount.com",
+  "client_id": "100166437748552228504",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-c1occ%40watchtower-test-60111.iam.gserviceaccount.com"
+}

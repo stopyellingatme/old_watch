@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/mainTest.css">
+    <link rel="stylesheet" href="css/material.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="css/vex.css" />
+    <link rel="stylesheet" href="css/vex-theme-plain.css" />
+    <link rel="stylesheet" href="css/jquery-impromptu.min.css">
+    <!--JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <!--JAVASCRIPT AREA-->
+
+    <!--EVERY OTHER SCRIPT BELOW THIS-->
+    <script src="js/material.min.js"></script>
+    <!--Charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <!--Date Formatting-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <!--Vex Dialogs-->
+    <script src="js/vex.combined.min.js"></script>
+    <!--Impromptu Script-->
+    <script src="js/jquery-impromptu.min.js"></script>
+    <!-- Service Worker-->
+    <script src="js/sw.js"></script>
+    <script>
+        vex.defaultOptions.className = 'vex-theme-plain'
+    </script>
+    <!--Firebase Setup-->
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+            authDomain: "watchtower-test-60111.firebaseapp.com",
+            databaseURL: "https://watchtower-test-60111.firebaseio.com",
+            projectId: "watchtower-test-60111",
+            storageBucket: "watchtower-test-60111.appspot.com",
+            messagingSenderId: "1052706939191"
+        };
+        firebase.initializeApp(config);
+    </script>
+</head>
+
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header" style="background-color: #2f3944; width: 100%;">
+            <div class="mdl-layout__header-row" style="background-color: #2f3944; ">
+                <!-- Title -->
+                <span class="mdl-layout-title">WatchTower™</span>
+            </div>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: #2f3944;">
+                <a href="#scroll-tab-1" class="mdl-layout__tab is-active">Health Score Data</a>
+                <a href="#scroll-tab-2" class="mdl-layout__tab">Accounting Data</a>
+                <a href="#scroll-tab-3" class="mdl-layout__tab">Company Details</a>
+                <!--<a href="#scroll-tab-4" class="mdl-layout__tab">Tab 4</a>-->
+                <!--<a href="#scroll-tab-5" class="mdl-layout__tab">Tab 5</a>-->
+                <!--<a href="#scroll-tab-6" class="mdl-layout__tab">Tab 6</a>-->
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">WatchTower™</span>
+        </div>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+                <div class="page-content" id="HSpageContent">
+                    <!-- Current Health Score Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="currentHlthScoreCard">
+                        <div class="mdl-card__title" title="Name of the Company!" id="companyNameLabel" style="color: #303030;">
+                            <h3>Company Name*
+
+                            </h3>
+                            <hr>
+                        </div>
+
+                        <div class="mdl-card__supporting-text">
+                            <!--<hr>-->
+                            <label id="currentHlthScoreLabel" title="Indicator of a company's financial health." style="color: #424242; "><h3>Health Score: ##.00</h3></label>
+                            <label id="hsMeaningLabel" title="What the Health Score means for the Company" style="color: #424242; font-size:16px;"></label>
+                        </div>
+                        <!-- <div class="mdl-card__menu">
+                        <i class="material-icons">code</i>
+
+                    </div> -->
+                    </div>
+
+                    <!-- Health Score Graph/Breakdown Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="testCard">
+                        <!--<div class="mdl-card__header" title="This area displays all Health Scores recoreded by the selected company" style="margin: 5px; color: #000b16; font-size: 20px;">Health Score</div>-->
+
+                        <div class="mdl-card__supporting-text" style="width: 100%;">
+                            <!--Health Score Bar Chart is built here!-->
+                            <div id="hsChartArea">
+                                <canvas id="healthScoreBarCharttest" height="35%" width="100%" stlye="display: block;"></canvas>
+                            </div>
+
+                        </div>
+                        <div class="mdl-card__menu">
+                            <button id="changeToLineButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="changeToLineChart()">
+                    <i class="material-icons">timeline</i>
+                        </button>
+                            <!--<span><i class="material-icons" >timeline</i></span>-->
+                            <!--<span class="mdl-tooltip" for="tt1" >HyperText Markup Language</span>-->
+                        </div>
+
+                    </div>
+
+                    <!-- HEALTH SCORE RATIOS WEB/RADAR CHART -->
+                    <div class="mdl-card mdl-shadow--2dp" id="webChartCard">
+                        <!-- <div class="mdl-card__header" title="Each Core Ratio is aligned on this Web Chart" style="margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Core Ratios Radar Chart</div> -->
+
+                        <div class="mdl-card__supporting-text" id="ratioWebArea">
+                            <canvas id="ratioWebChart" height="100%" width="100%" stlye="display: block;"></canvas>
+                        </div>
+                    </div>
+
+
+
+                    <!-- HS Ratios Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="healthScoreGraphCard">
+                        <div class="mdl-card__header" style="width: 100%; margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Core Ratios</div>
+
+                        <div class="mdl-card__supporting-text" style="text-align: center;">
+                            <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Ratio Name</th>
+
+                                        <th class="mdl-data-table__cell--non-numeric">Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr title="Sufficiency of resources and their flexibility. 35% of Health Score. Normal Value: 0.4">
+                                        <td class="mdl-data-table__cell--non-numeric"><strong>Primary Reserve</strong></td>
+
+                                        <td id="prRatioRow">##.00</td>
+                                    </tr>
+                                    <tr title="Capacity to repay total debt through reserves. 35% of Health Score. Normal Value: 1.25 - 2.0">
+                                        <td class="mdl-data-table__cell--non-numeric"><strong>Viability</strong></td>
+
+                                        <td id="vrRatioRow">##.00</td>
+                                    </tr>
+                                    <tr title="Is the company performing better financially this quarter than Last? 20% of Health Score. Normal Value: 3 - 4.0">
+                                        <td class="mdl-data-table__cell--non-numeric"><strong>Return On Net Assets</strong></td>
+
+                                        <td id="ronaRatioRow">##.00</td>
+                                    </tr>
+                                    <tr title="Is the company living within available resources? 10% of Health Score. Normal Value: 2 - 4.0">
+                                        <td class="mdl-data-table__cell--non-numeric"><strong>Net Operating Revenues</strong></td>
+
+                                        <td id="oprevRatioRow">##.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mdl-card__menu">
+                            <button id="hlthScoreRatioEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="HScomponentInput()"><i class="material-icons">edit</i></button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- HS Components Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="mainRatiosCard">
+                        <div class="mdl-card__header" title="These 7 components comprise the 4 Core Ratios, which make a Health Score" style="width: 100%; margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Core Ratio Components</div>
+                        <div class="mdl-card__supporting-text" id="hsComponentsTableDisplay">
+                            <table class="mdl-data-table mdl-js-data-table" id="healthScoreRatioTable" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th class='mdl-data-table__cell--non-numeric'>Component Name</th>
+
+                                        <th>Total (USD)</th>
+                                        <th>Ratio Assoc.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr title="Ammount of Expendable Assets after last Quarter">
+                                        <td class='mdl-data-table__cell--non-numeric'>Expendable Net Assets</td>
+
+                                        <td id="ENA0row">$.00</td>
+                                        <td>Primary Reserve</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Total Expenses</td>
+
+                                        <td id="totalExpRow">$.00</td>
+                                        <td>Primary Reserve</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Expendable Net Assets</td>
+
+                                        <td id="ENA1row">$.00</td>
+                                        <td>Viability</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Long Term Debt</td>
+
+                                        <td id="ltdRow">$.00</td>
+                                        <td>Viability</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Delta Net Assets</td>
+
+                                        <td id="deltaNetAssetsRow">$.00</td>
+                                        <td>Return On Net Assets</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Net Assets</td>
+
+                                        <td id="bnaRow">$.00</td>
+                                        <td>Return On Net Assets</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Operating Surplus or Deficit</td>
+
+                                        <td id="opSorDrow">$.00</td>
+                                        <td>Net Operating Revenues</td>
+                                    </tr>
+                                    <tr>
+                                        <td class='mdl-data-table__cell--non-numeric'>Operating Revenues</td>
+
+                                        <td id="opRevRow">$.00</td>
+                                        <td>Net Operating Revenues</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                        <div class="mdl-card__menu">
+                            <button id="hlthScoreRatioEditButton2" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="HScomponentInput()"><i class="material-icons">edit</i></button>
+                        </div>
+                    </div>
+
+
+                    <!-- Componenets of Components Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="componentsInputDataCard">
+                        <!-- <div class="mdl-card__header" style="margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Component Data</div> -->
+                        <div id="componentsTableContainer" style="display: flex; width:100%;">
+                            <div class="mdl-card__supporting-text" style="text-align: center; justify-content: space-around; width: 100%;">
+
+                                <h5 title="Component Data originating from the Balance Sheet">Balance Sheet Data</h5>
+                                <table class="mdl-data-table mdl-js-data-table" style="min-width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Entry Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Cash and Cash Equivalents</td>
+                                            <td id="cashAndEqRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Long Term Debt</td>
+                                            <td id="longtermdebtRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Assets (Current)</td>
+                                            <td id="netAssetsRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Prev Q Net Assets</td>
+                                            <td id="prevQnetAssetsRow">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mdl-card__supporting-text" style="text-align: center; width: 100%;">
+                                <h5 title="Component Data originating from the Income Statement">Income Statement Data</h5>
+
+                                <table class="mdl-data-table mdl-js-data-table" style="min-width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Entry Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Cost of Goods Sold</td>
+                                            <td id="cogsRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Selling, General and Admin Expense</td>
+                                            <td id="sellingAndadminRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Depreciation and Amortization</td>
+                                            <td id="depAndamortRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Interest Income/Expense</td>
+                                            <td id="interestExpRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Non-Operating Income/Expense</td>
+                                            <td id="otherNonOpRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Income Tax Expense</td>
+                                            <td id="incomeTaxExpRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Income</td>
+                                            <td id="netIncomeRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Sales</td>
+                                            <td id="netSalesRow">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+                <div class="page-content" id="FADpageContent">
+                    <!-- Health Score Graph/Breakdown Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="finChartCard">
+                        <!-- <div class="mdl-card__header" title="Display selected financial ratio trend data." style="width: 100%; margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Financial Ratio Trend Data</div> -->
+
+                        <div class="mdl-card__supporting-text" style="width: 100%;">
+                            <div id="finRatioChartArea">
+                                <h3 style="color: black;">Select Financial Ratio Below</h3>
+                                <h5>Display trend data (Line Graph)</h5>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- Extra Financial Ratios Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="finRatiosCard">
+                        <!-- <div class="mdl-card__header" title="These Ratios are meant to give a deeper understanding of current financial activity." style="margin: 5px; color: #000b16; font-size: 24px; text-align: left;">Financial Ratios</div> -->
+                        <div id="fadTableContainer" style="display: flex; width:100%;">
+                            <div class="mdl-card__supporting-text" style="text-align: center; justify-content: space-around; width: 100%;">
+                                <h5 title="Main points from the Balance Sheet">Asset Manangement Ratios</h5>
+
+                                <table class="mdl-data-table mdl-js-data-table" style="min-width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Ratio Name</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr title="A low turnover implies weak sales and, therefore, excess inventory. A high ratio implies either strong sales and/or large discounts.">
+                                            <td value="inventoryTO" onclick="getFinRatioChartData(event)" id="invTurnoverRowParent" class="mdl-data-table__cell--non-numeric">Inventory Turnover</td>
+                                            <td value="inventoryTO" onclick="getFinRatioChartData(event)" id="invTurnoverRow">#.00</td>
+                                        </tr>
+                                        <tr title="Generally a low ratio implies that the company should reassess its credit policies in order to ensure the timely collection of imparted credit that is not earning interest for the firm.">
+                                            <td value="receivablesTO" onclick="getFinRatioChartData(event)" id="recTurnoverRowParent" class="mdl-data-table__cell--non-numeric">Receivables Turnover</td>
+                                            <td value="receivablesTO" onclick="getFinRatioChartData(event)" id="recTurnoverRow">#.00</td>
+                                        </tr>
+                                        <tr title="If the turnover ratio is falling from one period to another, this is a sign that the company is taking longer to pay off its suppliers than it was in previous time periods. The opposite is true when the turnover ratio is increasing, which means that the company is paying off suppliers at a faster rate.">
+                                            <td value="payablesTO" onclick="getFinRatioChartData(event)" id="payTurnoverRowParent" class="mdl-data-table__cell--non-numeric">Payables Turnover</td>
+                                            <td value="payablesTO" onclick="getFinRatioChartData(event)" id="payTurnoverRow">#.00</td>
+                                        </tr>
+                                        <tr title="Generally speaking, the higher the asset turnover ratio, the better the company is performing, since higher ratios imply that the company is generating more revenue per dollar of assets.">
+                                            <td value="totalAssetsTO" onclick="getFinRatioChartData(event)" id="totalTurnoverRowParent" class="mdl-data-table__cell--non-numeric">Total Asset Turnover</td>
+                                            <td value="totalAssetsTO" onclick="getFinRatioChartData(event)" id="totalTurnoverRow">#.00</td>
+                                        </tr>
+                                        <tr title="Generally, a lower (shorter) DSI is preferred, but it is important to note that the average DSI varies from one industry to another.">
+                                            <td value="dsi" onclick="getFinRatioChartData(event)" id="dsiDisplayRowParent" class="mdl-data-table__cell--non-numeric">Days Sales in Inventory</td>
+                                            <td value="dsi" onclick="getFinRatioChartData(event)" id="dsiDisplayRow">#.00</td>
+                                        </tr>
+                                        <tr title="A low DSO value means that it takes a company fewer days to collect its accounts receivable. A high DSO number shows that a company is selling its product to customers on credit and taking longer to collect money.">
+                                            <td value="dso" onclick="getFinRatioChartData(event)" id="dsoDisplayRowParent" class="mdl-data-table__cell--non-numeric">Days Sales Outstanding</td>
+                                            <td value="dso" onclick="getFinRatioChartData(event)" id="dsoDisplayRow">#.00</td>
+                                        </tr>
+                                        <tr title="Most companies’ DPO is about 30, meaning that it takes them about a month to pay their vendors. DPO can vary by industry, and a company can compare its DPO to the industry average to see if it is paying its vendors too quickly or too slowly.">
+                                            <td value="dpo" onclick="getFinRatioChartData(event)" id="dpoDisplayRowParent" class="mdl-data-table__cell--non-numeric">Days Payable Outstanding</td>
+                                            <td value="dpo" onclick="getFinRatioChartData(event)" id="dpoDisplayRow">#.00</td>
+                                        </tr>
+                                        <tr title="The Cash Conversion Cycle measures how fast a company can convert cash on hand into even more cash on hand.">
+                                            <td value="cashCycle" onclick="getFinRatioChartData(event)" id="cashCycleDisplayRowParent" class="mdl-data-table__cell--non-numeric">Cash Cycle</td>
+                                            <td value="cashCycle" onclick="getFinRatioChartData(event)" id="cashCycleDisplayRow">#.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mdl-card__supporting-text" style="text-align: center; width: 100%;">
+                                <h5 title="Main points from the Income Statement">Solvency & Capital Structure</h5>
+                                <table class="mdl-data-table mdl-js-data-table" style="min-width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Ratio Name</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr title="The current ratio is a liquidity ratio that measures a company's ability to pay short-term and long-term obligations">
+                                            <td value="currentRatio" onclick="getFinRatioChartData(event)" id="currRatioRowParent" class="mdl-data-table__cell--non-numeric">Current Ratio</td>
+                                            <td value="currentRatio" onclick="getFinRatioChartData(event)" id="currRatioRow">#.00</td>
+                                        </tr>
+                                        <tr title="The quick ratio measures a company’s ability to meet its short-term obligations with its most liquid assets.">
+                                            <td value="quickRatio" onclick="getFinRatioChartData(event)" id="quickRatioRowParent" class="mdl-data-table__cell--non-numeric">Quick Ratio</td>
+                                            <td value="quickRatio" onclick="getFinRatioChartData(event)" id="quickRatioRow">#.00</td>
+                                        </tr>
+                                        <tr title="The lower a company’s interest coverage ratio is, the more its debt expenses burden the company. When a company's interest coverage ratio is 1.5 or lower, its ability to meet interest expenses may be questionable.">
+                                            <td value="interestCoverageRatio" onclick="getFinRatioChartData(event)" id="intCoverRatioRowParent" class="mdl-data-table__cell--non-numeric">Interest Coverage Ratio</td>
+                                            <td value="interestCoverageRatio" onclick="getFinRatioChartData(event)" id="intCoverRatioRow">#.00</td>
+                                        </tr>
+                                        <tr title="A ratio of 4 (for example) means that a company makes enough income to pay for its total interest expense 4 times over. Said another way, this company's income is 4 times higher than its interest expense for the year.">
+                                            <td value="timesEarnedRatio" onclick="getFinRatioChartData(event)" id="timesEarnedIntRatioRowParent" class="mdl-data-table__cell--non-numeric">Times Earned Interest Ratio</td>
+                                            <td value="timesEarnedRatio" onclick="getFinRatioChartData(event)" id="timesEarnedIntRatioRow">#.00</td>
+                                        </tr>
+                                        <tr title="Each industry has different debt to equity ratio benchmarks, as some industries tend to use more debt financing than others. A debt ratio of .5 means that there are half as many liabilities than there is equity.">
+                                            <td value="debtVsEquityRatio" onclick="getFinRatioChartData(event)" id="debtEqRatioRowParent" class="mdl-data-table__cell--non-numeric">Debt-Equity Ratio</td>
+                                            <td value="debtVsEquityRatio" onclick="getFinRatioChartData(event)" id="debtEqRatioRow">#.00</td>
+                                        </tr>
+                                        <tr title="Companies finance their operations with equity or debt, so a high equity multiplier indicates that a larger portion of asset financing is attributed to debt.">
+                                            <td value="equityMultiplier" onclick="getFinRatioChartData(event)" id="eqMultiRatioRowParent" class="mdl-data-table__cell--non-numeric">Equity Multiplier Ratio</td>
+                                            <td value="equityMultiplier" onclick="getFinRatioChartData(event)" id="eqMultiRatioRow">#.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mdl-card__supporting-text" style="text-align: center; width: 100%;">
+                                <h5 title="Main points from the Cash Flows Statement">Profitablity & Operations</h5>
+                                <table class="mdl-data-table mdl-js-data-table" style="min-width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Ratio Name</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr title="The gross margin number represents the portion of each dollar of revenue that the company retains as gross profit. For example, if a company's gross margin for the most recent quarter is 35%, that means it retains $0.35 from each dollar of revenue generated.">
+                                            <td value="grossProfitMargin" onclick="getFinRatioChartData(event)" id="grossProfitMarginRowParent" class="mdl-data-table__cell--non-numeric">Gross Profit Margin</td>
+                                            <td value="grossProfitMargin" onclick="getFinRatioChartData(event)" id="grossProfitMarginRow">#.00</td>
+                                        </tr>
+                                        <tr title="High or increasing operating margin is preferred because if the operating margin is increasing, the company is earning more per dollar of sales.">
+                                            <td value="operatingProfitMargin" onclick="getFinRatioChartData(event)" id="opProfitMarginRowParent" class="mdl-data-table__cell--non-numeric">Operating Profit Margin</td>
+                                            <td value="operatingProfitMargin" onclick="getFinRatioChartData(event)" id="opProfitMarginRow">#.00</td>
+                                        </tr>
+                                        <tr title="Net profit margins show how much of each dollar collected by a company as revenue translates into profit. A 56% profit margin indicates the company earns 56 cents in profit for every dollar it collects.">
+                                            <td value="netProfitMargin" onclick="getFinRatioChartData(event)" id="netProfitMarginRowParent" class="mdl-data-table__cell--non-numeric">Net Profit Margin</td>
+                                            <td value="netProfitMargin" onclick="getFinRatioChartData(event)" id="netProfitMarginRow">#.00</td>
+                                        </tr>
+                                        <tr title="The return on assets (ROA) ratio illustrates how well management is employing the company's total assets to make a profit. The higher the return, the more efficient management is in utilizing its asset base.">
+                                            <td value="returnOnAssetsRatio" onclick="getFinRatioChartData(event)" id="returnOnAssetsRowParent" class="mdl-data-table__cell--non-numeric">Return on Assets (ROA)</td>
+                                            <td value="returnOnAssetsRatio" onclick="getFinRatioChartData(event)" id="returnOnAssetsRow">#.00</td>
+                                        </tr>
+                                        <tr title="The return on equity ratio (ROE) measures how much the shareholders earned for their investment in the company. The higher the ratio percentage, the more efficient management is in utilizing its equity base and the better return is to investors.">
+                                            <td value="returnOnEquityRatio" onclick="getFinRatioChartData(event)" id="returnOnEquityRowParent" class="mdl-data-table__cell--non-numeric">Return on Equity (ROE)</td>
+                                            <td value="returnOnEquityRatio" onclick="getFinRatioChartData(event)" id="returnOnEquityRow">#.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <!--  <div class="mdl-card__menu">
+                        <button id="fadRatiosEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveFADdata()"><i class="material-icons">edit</i></button>
+                    </div> -->
+                    </div>
+
+
+                    <!-- Formal Accounting Data Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="FADmainPoints">
+                        <!-- <div class="mdl-card__header" title="Summary of the Institution's' the Current Quarter Formal Accounting Data" style="margin: 5px; color: #000b16; font-size: 24px; text-align: center;">Accounting Data Summary</div> -->
+                        <div id="fadTableContainer" style="display: flex; width:100%;">
+                            <div class="mdl-card__supporting-text" style="text-align: center; justify-content: space-around; width: 100%;">
+                                <h5 title="Main points from the Balance Sheet"><button id="fadBalanceEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveFADBalancedata()"><i class="material-icons">edit</i></button> Balance Sheet Data </h5>
+
+                                <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Entry Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Total Assets</td>
+                                            <td id="totalAssetsRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Total Liabilities</td>
+                                            <td id="totalLibRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Total Equity</td>
+                                            <td id="totalEqRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Cash and Cash Equivalents</td>
+                                            <td id="cashAndEqRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Inventory</td>
+                                            <td id="avlInvRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Property</td>
+                                            <td id="avlPropRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Assets</td>
+                                            <td id="avlOtherAssetsRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Long Term Debt</td>
+                                            <td id="longtermdebtRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Accounts Payable</td>
+                                            <td id="avlAccntsPayRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Interest Payable</td>
+                                            <td id="avlInterestPayRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Taxes Payable</td>
+                                            <td id="avlTaxesPayRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Payable</td>
+                                            <td id="avlotherPayRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Assets (Current)</td>
+                                            <td id="netAssetsRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Prev Q Net Assets</td>
+                                            <td id="prevQnetAssetsRow2">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mdl-card__supporting-text" style="text-align: center; justify-content: space-around; width: 100%;">
+                                <h5 title="Main points from the Income Statement"><button id="fadIncomeEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveFADIncomedata()"><i class="material-icons">edit</i></button> Income Statement Data</h5>
+                                <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Entry Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Cost of Goods Sold</td>
+                                            <td id="cogsRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Selling, General and Admin Expense</td>
+                                            <td id="sellingAndadminRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Depreciation and Amortization</td>
+                                            <td id="depAndamortRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Interest Income/Expense</td>
+                                            <td id="interestExpRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Non-Operating Income/Expense</td>
+                                            <td id="otherNonOpRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Income Tax Expense</td>
+                                            <td id="incomeTaxExpRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Sales</td>
+                                            <td id="netSalesRow2">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Gross Operating Profit</td>
+                                            <td id="grossOpProfitRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">EBITDA</td>
+                                            <td id="EBITDARow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Operating Income</td>
+                                            <td id="OpIncomeRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">EBIT</td>
+                                            <td id="EBITRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Income</td>
+                                            <td id="netInRow">$.00</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mdl-card__supporting-text" style="text-align: center; justify-content: space-around; width: 100%;">
+                                <h5 title="Main points from the Cash Flows Statement"><button id="fadCashFlowEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveFADCashFlowdata()"><i class="material-icons">edit</i></button>Cash Flows Data</h5>
+                                <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Entry Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Operating Activities</td>
+                                            <td id="opActRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Investing Activities</td>
+                                            <td id="invActRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Financing Activities</td>
+                                            <td id="finActRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Net Increase/Decrease in Cash</td>
+                                            <td id="netInDeRow">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <!-- <div class="mdl-card__menu">
+                        <button id="fadMainEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveFADdata()"><i class="material-icons">edit</i></button>
+                    </div> -->
+                    </div>
+
+
+
+                    <!-- Assets vs Lib  Radar Chart Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="assetsRadarChartCard">
+                        <!-- <div class="mdl-card__header" title="This displays the selected Company's Current Assets vs. Current Liabilities" style="margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Assets vs Liabilities Polar Area Chart</div> -->
+                        <div id="assetsChartContainer">
+                            <div class="mdl-card__supporting-text" id="assetsRadarDisplayArea" style="display: block;">
+                                <div id="assetsRadar">
+                                    <canvas id="assetsRadarChart" height="400px" width="400px"></canvas>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mdl-card__menu">
+                            <button id="aVlChartEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveAssetsAndLibData()"><i class="material-icons">edit</i></button>
+                        </div>
+                    </div>
+
+                    <!-- Assets vs Lib Readout Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="assetsVlibReadOutCard">
+                        <div class="mdl-card__header" title="This card displays a read out of current Assets vs current Liabilities. Chart can be seen to left." style="margin: 5px; color: #000b16; font-size: 20px; text-align: left;">Assets vs Liabilities</div>
+
+                        <div class="mdl-card__supporting-text" style="display: flex; text-align: center; margin: : 10px;" id="assetsVlibData">
+                            <div class="mdl-card__supporting-text" style="text-align: center;" id="assetsVlibDataTable1">
+                                <table class="mdl-data-table mdl-js-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Asset Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Cash</td>
+                                            <td id="avlCashRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Inventory</td>
+                                            <td id="avlInvRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Property</td>
+                                            <td id="avlPropRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Assets</td>
+                                            <td id="avlOtherAssetsRow">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="mdl-card__supporting-text" style="text-align: center;" id="assetsVlibDataTable2">
+                                <table class="mdl-data-table mdl-js-data-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="mdl-data-table__cell--non-numeric">Liability Name</th>
+                                            <th>Amount (USD)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Accounts Payable</td>
+                                            <td id="avlAccntsPayRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Interest Payable</td>
+                                            <td id="avlInterestPayRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Taxes Payable</td>
+                                            <td id="avlTaxesPayRow">$.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="mdl-data-table__cell--non-numeric">Other Payable</td>
+                                            <td id="avlotherPayRow">$.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="mdl-card__menu">
+                            <button id="aVlDisplayEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveAssetsAndLibData()"><i class="material-icons">edit</i></button>
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- DYW Channels Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="DYWChannelsCard">
+                        <div class="mdl-card__header" title="This is simply a display of the main Income and Outflow of Capital" style="margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Data You Want</div>
+                        <div class="mdl-card__supporting-text" id="dywCahnDisplayBox">
+                            <table class="mdl-data-table mdl-js-data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Channel Description</th>
+
+                                        <th>Amount (USD)</th>
+                                        <th>Channel Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="revChannelRow">
+                                        <td class="mdl-data-table__cell--non-numeric">Ecommerce Site</td>
+
+                                        <td>$.00</td>
+                                        <td>Revenue</td>
+                                    </tr>
+                                    <tr id="fixedCostRow">
+                                        <td class="mdl-data-table__cell--non-numeric">Office Rent</td>
+
+                                        <td>$.00</td>
+                                        <td>Fixed Cost</td>
+                                    </tr>
+                                    <tr id="dynamicCostRow">
+                                        <td class="mdl-data-table__cell--non-numeric">Office Supplies</td>
+
+                                        <td>$.00</td>
+                                        <td>Dynamic Cost</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="mdl-card__menu">
+                            <button id="dywChanEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveDYWmainChanData()"><i class="material-icons">edit</i></button></div>
+
+                    </div>
+
+                    <!--  Data You Want Ratios Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="componentsCard">
+                        <!-- <div class="mdl-card__header" title="Displays the Cost to Acquire a new Customer vs. the Revenue a Customer generates" style="width: 100%; margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Data You Want (Charts)</div> -->
+                        <div class="mdl-card__supporting-text" id="dyaChartDisplayBox" style="display: inline-flex; justify-content: space-around; width: 100%; flex-flow: row wrap;">
+                            <div id="pieDiv">
+                                <!-- <canvas id="pieChart" style="width: 100%; height: 270px;"></canvas> -->
+                            </div>
+                            <div id="doughDiv">
+                                <!-- <canvas id="dnChart" style="width: 100%; height: 270px;"></canvas> -->
+                            </div>
+                            <br>
+                            <div id="dywChartReadOut1" style="width: 50%;">
+                                <h5>Acquisition Rev: $.00</h5>
+                                <h5>Acquisition Cost: $.00</h5>
+                            </div>
+                            <div id="dywChartReadOut2" style="width: 50%;">
+                                <h5>Business Development Expense: $.00</h5>
+                                <h5>Travel and Entertainment: $.00</h5>
+                            </div>
+
+                        </div>
+                        <div class="mdl-card__menu">
+                            <button id="dywChartEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveDYWRatiodata()"><i class="material-icons">edit</i></button>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Sector Data Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="sectorDataCard">
+                        <!-- <div class="mdl-card__header" title="These Ratios are meant to give a deeper understanding of current financial activity." style="width: 100%; margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Sector Data</div> -->
+
+                        <div class="mdl-card__supporting-text" style="text-align: center;" id="sectorDataDisplay">
+                            <table class="mdl-data-table mdl-js-data-table" style="width: 100%;">
+                                <div style="display: inline-flex;">
+                                    <label id="mainSectorLabel"><h5>Main Sector  ---</h5></label>
+                                    <br>
+                                    <br>
+                                    <label id="subSectorLabel"><h5>--  Sub Sector</h5></label>
+                                </div>
+
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                                        <th>Amount (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="sectorItem0Row">
+                                        <td class="mdl-data-table__cell--non-numeric">Item 1</td>
+                                        <td>$.00</td>
+                                    </tr>
+                                    <tr id="sectorItem1Row">
+                                        <td class="mdl-data-table__cell--non-numeric">Item 2</td>
+                                        <td>$.00</td>
+                                    </tr>
+                                    <tr id="sectorItem2Row">
+                                        <td class="mdl-data-table__cell--non-numeric">Item 3</td>
+                                        <td>$.00</td>
+                                    </tr>
+                                    <tr id="sectorItem3Row">
+                                        <td class="mdl-data-table__cell--non-numeric">Item 4</td>
+                                        <td>$.00</td>
+                                    </tr>
+                                    <tr id="sectorItem4Row">
+                                        <td class="mdl-data-table__cell--non-numeric">Item 5</td>
+                                        <td>$.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="mdl-card__menu" id="sectEditButtonArea">
+                            <button id="sectorDataEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveSectorData()"><i class="material-icons">edit</i></button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-3">
+                <div class="page-content" id="CompDetailspageContent">
+                    <!-- Company Description Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="CompanyDescriptionCard">
+                        <div class="mdl-card__media" style="display: inline-flex;  justify-content: space-around; margin: 5px;  background-color: white;">
+                            <img src="img/noImage.png" id="logoDisplayImg" width="180px" height="180px" border="0" alt="" style="padding-bottom:5px;">
+                        </div>
+                        <div class="mdl-card__supporting-text" id="companyDescriptionTextContainer" style="overflow: auto;">
+                            <label id="compDescripCardNameLabel" style="font-size: 28px; color: #000b16;"><strong>Company Name</strong></label>
+                            <hr>
+
+                            <label id="companyKeyLabel" style="font-size: 19px; color: #000b16;">Example Key --> "-KG96h423ytHOt7foh9y0" <-- Example Key</label>
+                            <br>
+                            <label style="font-size: 17px;">Share this key with other WatchTower users!</label>
+                            <br>
+                            <br>
+                            <label id="compSectorLabel" style="font-size: 18px; color: #000b16;">Main Sector  -----  Sub Sector</label>
+                            <br>
+                            <br>
+                            <label id="hqLabel" style="font-size: 18px; color: #000b16;">HQ Location</label>
+                            <br>
+                            <br>
+                            <label id="companyDescriptionLabel" style="font-size: 18px; color: #000b16;">Management to Investor Dialog (goes here)</label>
+
+                            <br>
+
+
+                        </div>
+
+                        <div class="mdl-card__menu">
+                            <button id="compDesEditButton" class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" onclick="saveCompDescritiondata()"><i class="material-icons">edit</i></button>
+                        </div>
+                    </div>
+
+
+                    <!-- Scans Download List Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="scansListCard">
+                        <div class="mdl-card__header" style="margin: 5px; color: #000b16; font-size: 20px; text-align: center;">Financial Documents</div>
+                        <div id="scansDownloadArea" class="mdl-card__supporting-text" style="text-align: center;">
+
+                            <hr>
+
+                            <a href="#" style="font-size:18px; color:#3696bc;" onclick="window.location='scans.html'">All Financial Documents</a>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- All Data Inputs Card -->
+                    <div class="mdl-card mdl-shadow--2dp" id="allDataInputsCard">
+                        <div class="mdl-card__header" style="padding: 10px; color: #000b16; font-size: 22px; text-align: center;">Admin Control Panel</div>
+                        <hr>
+                        <div id="adminPanelStuff" style="display: flex;">
+                            <div id="allDataInputArea" class="mdl-card__supporting-text" style="color: black; font-size: 15px; width: 100%;">
+
+                                <h5><strong>All Data Inputs:</strong></h5>
+                                <button onclick="HScomponentInput()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="HScomponentInput()">Health Score Data</label><br>
+                                <button onclick="firstPHSDdialog()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">add</i></button><label onclick="firstPHSDdialog()">Add Past Health Score</label><br>
+                                <button onclick="removePastHealthScore()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">remove</i></button><label onclick="removePastHealthScore()">Remove Past Health Score</label><br><br><br>
+                                <button onclick="saveFADBalancedata()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveFADBalancedata()">Balance Sheet Data</label><br>
+                                <button onclick="insertPastBSdata_Dialog1()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">add</i></button><label onclick="insertPastBSdata_Dialog1()">Add Past Bal Sheet Data</label><br>
+                                <button onclick="removePastFAData()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">remove</i></button><label onclick="removePastFAData()">Remove Past Bal Sheet Data</label><br><br><br>
+                                <button onclick="saveFADIncomedata()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveFADIncomedata()">Income Statement Data</label><br>
+                                <button onclick="insertPastISdata_Dialog1()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">add</i></button><label onclick="insertPastISdata_Dialog1()">Add Past Income Statement Data</label><br>
+                                <button onclick="removePastFAData()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">remove</i></button><label onclick="removePastFAData()">Remove Past Income Statement Data</label><br><br><br>
+                                <button onclick="saveFADCashFlowdata()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveFADCashFlowdata()">Cash Flows Data</label><br>
+                                <button onclick="saveAssetsAndLibData()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveAssetsAndLibData()">Assets vs Lib Data</label><br>
+
+
+                                <button onclick="saveDYWmainChanData()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveDYWmainChanData()">Data You Want (Main Channels)</label><br>
+                                <button onclick="saveDYWRatiodata()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveDYWRatiodata()">Data You Want (Ratios)</label><br>
+                                <button onclick="saveSectorData()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveSectorData()">Sector Data</label><br>
+
+                                <button onclick="saveCompDescritiondata()" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">edit</i></button><label onclick="saveCompDescritiondata()">Company Description Data</label>
+                            </div>
+                            <div id="watchtersArea" class="mdl-card__supporting-text" style="color: black; font-size: 17px; width: 100%;">
+                                <h5><strong>Watchers:</strong></h5>
+                                <div id="companyLinkList" style="font-size: 16px;">
+
+                                </div>
+
+
+                            </div>
+                            <div id="compAdminDetailsArea" class="mdl-card__supporting-text" style="color: black; font-size: 14px; width: 100%;">
+                                <h5><strong>Company Options:</strong></h5>
+                                <a style="color: black;" onclick="deleteSelectedCompany()" id="deleteCompanyButton"></a>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--<section class="mdl-layout__tab-panel" id="scroll-tab-4">
+                <div class="page-content">
+
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+                <div class="page-content">
+
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="scroll-tab-6">
+                <div class="page-content">
+
+                </div>
+            </section>-->
+        </main>
+        </div>
+
+</body>
+
+</html>

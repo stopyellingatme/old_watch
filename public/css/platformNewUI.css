@@ -1,0 +1,14 @@
+#sideNavMenu{
+	margin: -10px;
+	margin-top: 10px;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+}
+#topNav{
+	margin: -10px;
+	padding: -10px;
+}
+#topNavMenu{
+	width: 100%;
+}

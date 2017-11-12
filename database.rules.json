@@ -1,0 +1,68 @@
+{
+    "rules": {
+        "users": {
+            "$userid": {
+                ".validate": "newData.hasChildren(['email', 'type'])",
+                "email": {
+                    ".validate": "newData.isString()"
+                },
+                "type": {
+                    ".validate": "newData.isString()"
+                },
+                "$other": {
+                    ".validate": "true"
+                },
+                ".read": "auth != null && auth.uid == $userid",
+                ".write": "auth != null && auth.uid == $userid"
+            }
+        },
+        "company-description-data": {
+            "$comp_id": {
+                "admin": {
+                    ".validate": "newData.isString() && newData.val() == auth.uid"
+                },
+
+                ".read": "root.child('users/'+auth.uid+'/linked-companies/'+$comp_id).val() == true",
+                ".write": "root.child('company-description-data/'+$comp_id+'/admin').val() == auth.uid"
+            },
+            ".read": "false",
+            ".write": "root.child('users/'+auth.uid+'/type').val() == 'Accountant' && auth != null || root.child('users/'+auth.uid+'/type').val() == 'Entrepreneur' && auth != null"
+        },
+        "health-score-data": {
+            "$comp_id": {
+                ".read": "root.child('users/'+auth.uid+'/linked-companies/'+$comp_id).val() == true",
+                ".write": "root.child('company-description-data/'+$comp_id+'/admin').val() == auth.uid"
+            },
+            ".read": "false",
+            ".write": "root.child('users/'+auth.uid+'/type').val() == 'Accountant' && auth != null || root.child('users/'+auth.uid+'/type').val() == 'Entrepreneur' && auth != null"
+        },
+        "data-you-want": {
+            "$comp_id": {
+                ".read": "root.child('users/'+auth.uid+'/linked-companies/'+$comp_id).val() == true",
+                ".write": "root.child('company-description-data/'+$comp_id+'/admin').val() == auth.uid"
+            },
+            ".read": "false",
+            ".write": "root.child('users/'+auth.uid+'/type').val() == 'Accountant' && auth != null || root.child('users/'+auth.uid+'/type').val() == 'Entrepreneur' && auth != null"
+        },
+        "sector-data": {
+            "$comp_id": {
+                ".read": "root.child('users/'+auth.uid+'/linked-companies/'+$comp_id).val() == true",
+                ".write": "root.child('company-description-data/'+$comp_id+'/admin').val() == auth.uid"
+            },
+            ".read": "false",
+            ".write": "root.child('users/'+auth.uid+'/type').val() == 'Accountant' && auth != null || root.child('users/'+auth.uid+'/type').val() == 'Entrepreneur' && auth != null"
+        },
+        "formal-accounting-data": {
+            "$comp_id": {
+                ".read": "root.child('users/'+auth.uid+'/linked-companies/'+$comp_id).val() == true",
+                ".write": "root.child('company-description-data/'+$comp_id+'/admin').val() == auth.uid"
+            },
+            ".read": "false",
+            ".write": "root.child('users/'+auth.uid+'/type').val() == 'Accountant' && auth != null || root.child('users/'+auth.uid+'/type').val() == 'Entrepreneur' && auth != null"
+        },
+        "user-payment-info": {
+            ".read": "false",
+            ".write": "false"
+        }
+    }
+}

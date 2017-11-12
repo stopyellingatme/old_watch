@@ -1,0 +1,225 @@
+body {
+    background-color: #F0F0F0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    background-attachment: fixed;
+}
+
+table {
+    color: black;
+}
+
+.mdl-card {
+    margin: 10px;
+}
+
+#HSpageContent {
+    display: flex;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+#FADpageContent {
+    display: flex;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+#CompDetailspageContent {
+    display: flex;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+#testCard {
+    width: 75%;
+    flex-flow: row wrap;
+}
+
+#finChartCard {
+    width: 95%;
+    flex-flow: row wrap;
+}
+
+#componentsInputDataCard {
+    min-width: 75%;
+}
+
+#currentHlthScoreCard {
+    width: 350px;
+    height: 25%;
+    flex-flow: row wrap;
+}
+
+#healthScoreGraphCard {
+    min-width: 350px;
+    height: 15%;
+    flex-flow: row wrap;
+}
+
+#webChartCard {
+    min-width: 35%;
+}
+
+#componentsCard {
+    min-width: 840px;
+    height: 100%;
+    flex-flow: row wrap;
+}
+
+
+/*FAD GRAPHS*/
+
+#assetsRadarChartCard {
+    min-width: 45%;
+    height: 15%;
+}
+
+
+/*ACTUALLY IS THE CHANNELS CARD*/
+
+#DYWChannelsCard {
+    min-width: 550px;
+    height: 35%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+/*ACTUALLY ALL ACCOUNTING DATA */
+
+#FADmainPoints {
+    min-width: 97%;
+    /*height: 30%;*/
+    /*flex-flow: row wrap;*/
+}
+
+#finRatiosCard {
+    min-width: 95%;
+}
+
+#assetsVlibReadOutCard {
+    min-width: 660px;
+    height: 100%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#CompanyDescriptionCard {
+    /*width: 50%;*/
+    height: 25%;
+    /*flex-flow: row wrap;*/
+    min-width: 650px;
+}
+
+#sectorDataCard {
+    width: 35%;
+    height: 45%;
+    flex-flow: row wrap;
+}
+
+#scansListCard {
+    min-width: 320px;
+    height: 25%;
+}
+
+#mainRatiosCard {
+    min-width: 590px;
+    height: 45%;
+    flex-flow: row wrap;
+}
+
+#allDataInputsCard {
+    width: 65%;
+}
+
+@media only screen and (max-width: 1026px) {
+    #mainRatiosCard {
+        display: none;
+    }
+    #DYWChannelsCard {
+        display: none;
+    }
+    #componentsCard {
+        display: none;
+    }
+    #assetsRadarChartCard {
+        display: none;
+    }
+    #FADmainPoints {
+        display: none;
+    }
+    #finRatiosCard {
+        display: none;
+    }
+    #assetsVlibReadOutCard {
+        display: none;
+    }
+    #sectorDataCard {
+        display: none;
+    }
+    #testCard {
+        display: none;
+    }
+    #finChartCard {
+        display: none;
+    }
+    #webChartCard {
+        display: none;
+    }
+    #compNameLabelHeader {
+        display: none;
+    }
+    #quarterCountdown {
+        display: none;
+    }
+    #dataSeperator {
+        display: none;
+    }
+    #componentsInputDataCard {
+        display: none;
+    }
+    #CompanyDescriptionCard {
+        height: 25%;
+        min-width: 350px;
+    }
+    #allDataInputsCard {
+        width: 80%;
+    }
+    #watchtersArea {
+        display: none;
+    }
+    #compAdminDetailsArea {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1450px) {}
+
+@media only screen and (max-width: 1330px) {
+    #modeToggleButton {
+        display: none;
+    }
+    #FADmainPoints {
+        display: none;
+    }
+    #componentsInputDataCard {
+        display: none;
+    }
+    #finChartCard {
+        display: none;
+    }
+}

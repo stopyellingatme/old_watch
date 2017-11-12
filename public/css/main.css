@@ -1,0 +1,368 @@
+html{
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F0F0F0;
+    
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    
+    overflow: visible;
+    background-attachment: fixed;
+    
+}
+table{
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+.mdl-card__header{
+    color: grey !important;
+}
+.mdl-list__item-primary-content{
+    height: 100% !important;
+}
+.menuStuff{
+    vertical-align: middle;
+    height: 100% !important;
+    text-overflow: ellipsis !important;
+    word-wrap: break-word !important;
+    overflow:hidden !important;
+}
+
+/*Change Icon Color on Hover - WatchList Items*/
+.companyNavItem i{
+    transition: color .2s ease;
+}
+.companyNavItem:hover i{
+    color: #9bdcff;
+}
+.companyNavItem .navlistName{
+    
+    transition: color .2s ease;
+}
+.companyNavItem:hover .navlistName{
+    color: black;
+}
+.mdl-card #specialIcon{
+    transition: color .8s ease !important;
+}
+.mdl-card:hover #specialIcon{
+    color: black !important;
+}
+
+/*All Data Cards - Change Color on Hover*/
+.mdl-card:not(#allDataInputsCard) label{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover:not(#allDataInputsCard) label{
+    color: #439fd8 !important;
+}
+
+.mdl-card h1{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover h1{
+    color: #439fd8 !important;
+}
+
+.mdl-card h2{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover h2{
+    color: #439fd8 !important;
+}
+
+.mdl-card h3{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover h3{
+    color: #439fd8 !important;
+}
+
+.mdl-card h4{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover h4{
+    color: #439fd8 !important;
+}
+
+.mdl-card h5{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover h5{
+    color: #439fd8 !important;
+}
+
+.mdl-card th{
+    transition: color .9s ease !important;
+}
+.mdl-card:hover th{
+    color: #439fd8 !important;
+}
+.mdl-data-table tbody tr:nth-child(2n) {
+  background-color: #f7f7f7;
+}
+/*.mdl-data-table tbody tr:nth-child(2n+1) {
+  background-color: lightgrey;
+}*/
+
+#companyDetailsArea {
+    display: flex;
+    
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    padding-top: 20px;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow: visible;
+}
+
+.mdl-card {
+    background: #2db34a;
+    transition-property: background, border-radius;
+    transition-duration: 0.9s;
+    transition-timing-function: linear;
+    transition: all .2s linear;
+    margin: 10px;
+    -webkit-transition: all .19s linear;
+    -moz-transition: all .19s linear;
+    -o-transition: all .19s linear;
+    transition: all .19s linear;
+}
+
+
+.mdl-card:hover {
+    box-shadow: 0 4px 4px 4px rgba(150, 150, 150, 0.4);
+    transform: translateZ(4px);
+    z-index: 200;
+}
+
+#testCard {
+    width: 75%;
+    height: 50%;
+    flex-flow: row wrap;
+}
+
+#finChartCard{
+     width: 95%;
+    flex-flow: row wrap;
+}
+
+#componentsInputDataCard {
+    min-width: 75%;
+}
+
+#currentHlthScoreCard {
+    width: 350px;
+    height: 25%;
+    flex-flow: row wrap;
+}
+
+#healthScoreGraphCard {
+    min-width: 420px;
+    height: 15%;
+    flex-flow: row wrap;
+}
+
+#webChartCard {
+    min-width: 30%;
+    height: 40%;
+}
+
+#componentsCard {
+    min-width: 840px;
+    height: 100%;
+    flex-flow: row wrap;
+}
+
+
+/*FAD GRAPHS*/
+
+#assetsRadarChartCard {
+    min-width: 45%;
+    height: 15%;
+}
+
+
+/*ACTUALLY IS THE CHANNELS CARD*/
+
+#DYWChannelsCard {
+    width: 550px;
+    height: 35%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+
+/*ACTUALLY ALL ACCOUNTING DATA */
+
+#FADmainPoints {
+    min-width: 97%;
+    /*height: 30%;*/
+    /*flex-flow: row wrap;*/
+}
+
+
+
+
+#finRatiosCard{
+    min-width: 95%;
+}
+
+#assetsVlibReadOutCard{
+    min-width: 660px;
+    height: 100%;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+#CompanyDescriptionCard {
+    /*width: 50%;*/
+    height: 25%;
+    /*flex-flow: row wrap;*/
+    min-width: 650px;
+}
+
+#sectorDataCard {
+    width: 35%;
+    height: 45%;
+    flex-flow: row wrap;
+}
+
+#scansListCard {
+    min-width: 320px;
+    height: 25%;
+}
+
+
+
+#mainRatiosCard {
+    min-width: 590px;
+    height: 45%;
+    flex-flow: row wrap;
+}
+#allDataInputsCard{
+    width: 90%;
+}
+#navListArea {
+    background-color: #F0F0F0;
+    border: 0px solid transparent !important;
+    box-shadow: 0 0 1.5px 0 rgba(0, 0, 0, 0.2);
+}
+#dataDisplayDateLabel{
+    color: #fffabc;
+}
+
+
+@media only screen and (max-width: 1026px) {
+    #mainRatiosCard {
+        min-width: 360px;
+    }
+    #DYWChannelsCard {
+        display: none;
+    }
+    #componentsCard {
+        display: none;
+    }
+    #assetsRadarChartCard {
+        display: none;
+    }
+    #FADmainPoints {
+        display: none;
+    }
+    #finRatiosCard{
+        display: none;
+    }
+    #assetsVlibReadOutCard{
+        display: none;
+    }
+    #sectorDataCard {
+        display: none;
+    }
+    #testCard {
+        display: none;
+    }
+    #finChartCard{
+        display: none;
+    }
+    #webChartCard {
+        display: none;
+    }
+    #compNameLabelHeader {
+        display: none;
+    }
+    
+    #dataSeperator {
+        display: none;
+    }
+    #componentsInputDataCard {
+        display: none;
+    }
+    #CompanyDescriptionCard {
+        height: 25%;
+        min-width: 350px;
+    }
+
+    #allDataInputsCard{
+        width: 95%;
+    }
+    #watchtersArea{
+        display: none;
+    }
+    #compAdminDetailsArea{
+        display: none;
+    }
+    #healthScoreGraphCard {
+        min-width: 260px;
+    }
+    
+    #mainPageHeader{
+        max-height: 30px;
+        height: 50px;
+        /*transition: top 0.2s ease-in-out !im;*/
+    }
+    /*#mainPageHeader:scroll{
+        color: rgba(0, 0, 0, 0.01);
+    }*/
+    
+    
+}
+
+
+@media only screen and (max-width: 420px) {
+    #quarterCountdown {
+        display: none;
+    }
+    #dataDisplayDateLabel{
+        display: none;
+    }
+    .menuStuff{
+    width: 300px !important;
+}
+}
+
+/*@media only screen and (max-width: 1330px) {
+    
+    #FADmainPoints {
+        display: none;
+    }
+    #componentsInputDataCard {
+        display: none;
+    }
+    #finChartCard{
+        display: none;
+    }
+
+}
+*/
+
+
+
+
+
+

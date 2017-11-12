@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93255113-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Payment Success!</title>
+    <link rel="stylesheet" type="text/css" href="css/success.css">
+    <!-- Google Tag Manager -->
+
+    <!-- End Google Tag Manager -->
+
+    <!--Cool Buttons!-->
+    <!-- <link rel="stylesheet" type="text/css" href="css/bttn.min.css"> -->
+    <!--Material Lite Components Refs-->
+    <link rel="stylesheet" href="css/material.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!--JQuery-->
+    <!--<script src="node_modules/jquery/dist/jquery.min.js"></script>-->
+    <!--Firebase Stuff-->
+    <!-- Site Functions & Actions -->
+    <!--<script src="js/app.min.js"></script>
+    <script src="js/app.js"></script>-->
+    <!--Stripe Payment -->
+    <!--JAVASCRIPT-->
+    <script src="js/success.js"></script>
+    <script src="js/material.min.js"></script>
+    <!-- Service Worker-->
+    <script src="js/sw.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+
+    var config = {
+        apiKey: "AIzaSyBlTA1IOZeySMa8hUgFJmlw_3YTrCAWvgM",
+        authDomain: "watchtower-test-60111.firebaseapp.com",
+        databaseURL: "https://watchtower-test-60111.firebaseio.com",
+        projectId: "watchtower-test-60111",
+        storageBucket: "watchtower-test-60111.appspot.com",
+        messagingSenderId: "1052706939191"
+    };
+        firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body>
+   
+    <!--Login Block-->
+
+    <div class="loginBlock" id="changePasswordArea">
+    <div style="display: flex; justify-content: center; background-color: #F0F0F0;">
+                <img src="img/wtLogoBlue7.gif" width="85px" height="100px" border="0" alt="" onclick="window.location='index.html'">
+            </div>
+        <div class="mdl-card mdl-shadow--16dp" id="changePasswordCard">
+            <div class="mdl-card__header" style="margin-top: 15px; color: #09293F; font-size: 26px; text-align: center;">WatchTower</div><br>
+            <label id="welcomeLabel" style="text-align: center; color: grey; font-size: 16px;">Change Password</label>
+
+            <br>
+            
+            <div id="loginFieldsContainer" style="text-align: center;">
+                <div class="mdl-card__supporting-text">
+
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="email" name="username" id="email_login" />
+                            <label class="mdl-textfield__label" for="username">Email</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="currentPassword">
+                            <label class="mdl-textfield__label" for="currentPassword">Current Password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="newPassword">
+                            <label class="mdl-textfield__label" for="newPassword">New Password</label>
+                        </div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" id="confirmNewPassword">
+                            <label class="mdl-textfield__label" for="confirmNewPassword">Confirm New Password</label>
+                        </div>
+
+                    </form>
+                    <div class="mdl-card__actions mdl-card--border" style="display: block; padding-top: 15px; margin-bottom: -5px;">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect" style="color: green;" onclick="checkPasswordMatch()">Submit</button>
+                        
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    
+
+</body>
+
+</html>

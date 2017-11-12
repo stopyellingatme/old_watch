@@ -1,0 +1,13 @@
+{
+  "name": "public",
+  "authors": [
+    "Taylor King <tk92590@gmail.com>"
+  ],
+  "description": "draft2",
+  "main": "main.html",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "moment": "^2.18.1"
+  }
+}
